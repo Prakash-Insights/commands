@@ -37,3 +37,29 @@ kubectl exec -it two-containers -c nginx-container curl localhost
 kubectl get pods --show-all -w
 kubectl logs mc2 -c producer    //mc2=podName , producer=container(1st) , -c=container
 kubectl get pod NAME -o wide
+
+
+
+
+URL:
+https://channel9.msdn.com/Series/Docker-for-NET-Developers/Multi-container-ASPNET-5-apps-with-Nginx-and-Redis
+https://www.mirantis.com/blog/multi-container-pods-and-container-communication-in-kubernetes/
+https://www.ibm.com/cloud/garage/content/course/helm-fundamentals/helm-def
+https://docs.min.io/docs/distributed-minio-quickstart-guide.html
+https://docs.bitnami.com/kubernetes/how-to/deploy-application-kubernetes-helm/
+https://github.com/bitnami/charts/tree/master/bitnami
+
+
+
+Check:
+https://www.ben-morris.com/using-docker-to-build-and-deploy-net-core-console-applications/
+https://itnext.io/overview-of-nats-streaming-ea0e80449507
+
+https://docs.nats.io/
+https://github.com/nats-io/nats.net
+http://nats-io.github.io/nats.net/
+
+Google :
+dot net console application deploy in docker container
+
+
