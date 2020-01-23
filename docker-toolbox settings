@@ -1,0 +1,39 @@
+For docker-desktop-toolbox
+
+First step is kubectl.exe minikube.exe these files paste into Docker-Toolbox directory
+kubectl.exe minikube.exe and helm.exe download from official source
+
+copy-paste in c drive
+create env variable in PATH(SYStem)
+
+in D-Toolbox, IP is working instead of localhost/127.0.0.1
+
+minikube start // starting minikube cluster
+minikube status
+minikube dashboard
+
+docker IP 192.168.99.100
+
+
+docker build .    // build image from Dockerfile
+docker build -t webapp1 .     // with tag name
+docker run -d -p 8080:80 --name mywebapp1 webapp1    // run and test
+docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" mywebapp1
+
+
+
+kubectl cluster-info
+
+example
+kubectl apply -f https://k8s.io/examples/pods/two-container-pod.yaml
+kubectl get pod two-containers --output=yaml
+kubectl exec -it two-containers -c nginx-container -- /bin/bash
+kubectl exec -it two-containers -c nginx-container ps aux
+kubectl exec -it two-containers -c nginx-container apt-get update
+kubectl exec -it two-containers -c nginx-container apt-get install curl
+kubectl exec -it two-containers -c nginx-container curl localhost
+
+
+kubectl get pods --show-all -w
+kubectl logs mc2 -c producer    //mc2=podName , producer=container(1st) , -c=container
+kubectl get pod NAME -o wide
