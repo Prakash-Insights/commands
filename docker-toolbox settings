@@ -101,6 +101,27 @@ kompose down  -f website-sample.yml
 @ helm install . --name rmq-old --namespace rmq-old
 @ https://hub.helm.sh/
 
+@1 choco install kubernetes-helm
+@2 kubectl config use-context docker-for-desktop  // Select the Kubernetes context you want to use
+@3 helm init
+@4 helm repo add banzaicloud-stable https://kubernetes-charts.banzaicloud.com/branch/master
+@5 helm repo list
+@6 helm install banzaicloud-stable/logging-operator // Install with default values
+@7 helm install banzaicloud-stable/logging-operator -f example.yaml // Install with custom yaml file
+@8 helm install banzaicloud-stable/logging-operator --set rbac.enabled=false  // Install with value overrides
+@9 helm create mychart
+@10 tree -d mychart
+@11 helm install --dry-run --debug ./mychart
+@12 helm install --dry-run --debug ./mychart --set service.internalPort=8080
+@13 helm install example ./mychart --set service.type=NodePort
+@14 helm lint ./mychart
+@15 helm install example2 ./mychart --set service.type=NodePort
+@16 helm package ./mychart
+@17 helm install example3 mychart-0.1.0.tgz --set service.type=NodePort
+@18 helm serve
+@19 helm dep update ./mychart
+
+
 $ doskey /LISTSIZE=1000
 $ doskey /HISTORY > E:\experi-Lab\cmd-26-jan.txt
 
@@ -109,6 +130,8 @@ minikube docker-env
 bash > eval $(minikube docker-env)
 minikube ssh
 	$ docker images
+minikube ip
+
 
 ----------------------help-----------------------
  pod (po), service (svc), replicationcontroller (rc), deployment (deploy), replicaset (rs)
@@ -158,6 +181,7 @@ https://www.katacoda.com/javajon/courses/kubernetes-applications/rabbitmq
 https://www.stevejgordon.co.uk/asp-net-core-2-ihostedservice
 GD-->  https://docs.particular.net/samples/hosting/docker/
 GD--> https://docs.particular.net/nservicebus/dotnet-templates#nservicebus-docker-container
+HELM GD--> https://banzaicloud.com/blog/creating-helm-charts/
 
 Check:
 https://www.ben-morris.com/using-docker-to-build-and-deploy-net-core-console-applications/
