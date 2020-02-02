@@ -1,0 +1,37 @@
+{{- if or (.Values.persistence.local.enabled) (.Values.persistence.nfs.enabled) -}}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: pvc-{{ template "nats-ss.name" . }}
+  {{- if .Values.persistence.nfs.enabled }}
+  annotations:
+    {{- if .Values.persistence.nfs.dynamic }}
+    volume.beta.kubernetes.io/storage-class: {{ .Values.persistence.nfs.storageClass | quote }}
+    {{- else }}
+    volume.beta.kubernetes.io/storage-class: ""
+    {{- end }}
+  {{- end }}
+  labels:
+    app: {{ template "nats-ss.name" . }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    {{- if .Values.persistence.nfs.enabled }}
+    type: nfs
+    {{- else if .Values.persistence.local.enabled }}
+    type: local
+    {{- end }}
+spec:
+  volumeMode: Filesystem
+  resources:
+    requests:
+  {{- if .Values.persistence.nfs.enabled }}
+      storage: {{ .Values.persistence.nfs.capacity }}
+  accessModes:
+    - {{ .Values.persistence.nfs.accessMode }}
+  {{- else if .Values.persistence.local.enabled }}
+      storage: {{ .Values.persistence.local.capacity }}
+  accessModes:
+    - {{ .Values.persistence.local.accessMode }}
+  {{- end }}
+{{- end -}}

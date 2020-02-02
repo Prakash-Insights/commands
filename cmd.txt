@@ -1,0 +1,226 @@
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<command>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+minikube start // starting minikube cluster
+minikube status
+minikube dashboard
+
+
+
+Docker-------------------
+{
+	docker build .    // build image from Dockerfile
+	docker build -t webapp1 .     // with tag name
+	docker run -d -p 8080:80 --name mywebapp1 webapp1    // run and test
+	docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" mywebapp1
+
+	docker exec -ti 658cef6f24aa bash
+	
+
+	docker login
+	docker tag d2a92e4c3a03 insights/receiver_data:latest
+	docker push insights/receiver_data
+
+	docker save receiver_data > receiver_data.tar
+	docker load --input receiver_data.tar
+}
+
+Docker-Compose-------------------
+{
+	docker-compose build
+	docker-compose logs CONTAINER_NAME
+	docker-compose up
+	docker-compose down
+}
+
+kubectl cluster-info
+helm version --short
+kubectl version --short
+kubectl config get-contexts
+kubectl get pods --namespace kube-system   // ns = namespace
+kubectl get namespace
+kubectl describe svc frontend  or  minikube service frontend
+
+-----------------two-container-pod example
+{
+	kubectl apply -f https://k8s.io/examples/pods/two-container-pod.yaml     //apply = create and build
+	kubectl get pod two-containers --output=yaml
+	kubectl exec -it two-containers -c nginx-container -- /bin/bash
+	kubectl exec -it two-containers -c nginx-container ps aux
+	kubectl exec -it two-containers -c nginx-container apt-get update
+	kubectl exec -it two-containers -c nginx-container apt-get install curl
+	kubectl exec -it two-containers -c nginx-container curl localhost
+}
+
+
+kubectl get pods --show-all -w
+kubectl logs mc2 -c producer    //mc2=podName , producer=container(1st) , -c=container
+kubectl get pod NAME -o wide
+
+kubectl api-resources --namespaced=true
+kubectl get namespaces --show-labels
+kubectl config view
+kubectl config use-context dev
+kubectl config use-context prod
+
+------------------change namespace
+{
+	kubectl config set-context $(kubectl config current-context) --namespace=nsb-rabbit   // default
+	kubectl config view
+	kubectl get pods
+}
+
+
+-------------------------------nsb-rabbit
+{
+	# kubectl create namespace nsb-rabbit
+	# helm install my-rabbit stable/rabbitmq-ha --namespace nsb-rabbit -f rabbit-values.yaml
+	# kubectl get deployments,pods,services --namespace nsb-rabbit
+	# kubectl describe all --namespace=nsb-rabbit
+	# NOT--> kubectl patch service my-rabbit-rabbitmq-ha --namespace=nsb-rabbit --type='json' --patch='[{"op": "replace", "path": "/spec/ports/0/nodePort", "value":31000}]'
+	# helm repo list
+	# %TEMP%\helm     //  tgz>open with 7z
+	# kubectl exec my-rabbit-rabbitmq-ha-0  --namespace=nsb-rabbit -- rabbitmqctl list_queues
+	# kubectl exec my-rabbit-rabbitmq-ha-0  --namespace=nsb-rabbit -- rabbitmqctl list_users
+	# kubectl exec my-rabbit-rabbitmq-ha-0  --namespace=nsb-rabbit -- rabbitmqctl status
+	# kubectl exec my-rabbit-rabbitmq-ha-0  --namespace=nsb-rabbit -- rabbitmqctl --help
+	# kubectl exec my-rabbit-rabbitmq-ha-0  --namespace=nsb-rabbit -- ifconfig -a
+	# NOT--> curl -sS -f --user guest:guest 127.0.0.1:15672/api/healthchecks/node{"status":"ok"}
+	# kubectl get all -o wide --namespace nsb-rabbit
+	# kubectl describe svc my-rabbit-rabbitmq-ha  --namespace=nsb-rabbit
+	# kubectl cluster-info    //get IP info and it IP expose to run locally (https://192.168.99.101:<PORT>)
+			<1> Kubernetes master is running at https://192.168.99.101:8443
+			<2> KubeDNS is running at https://192.168.99.101:8443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+			<3> service/my-rabbit-rabbitmq-ha  NodePort    10.96.34.149  15672:31673/TCP,5672:32584/TCP,4369:31056/TCP 
+				<3.1>  (https://192.168.99.101:31673)
+			<4> service/my-rabbit-rabbitmq-ha-discovery   ClusterIP   None           <none>        15672/TCP,5672/TCP,4369/TCP
+	# kubectl exec -it my-rabbit-rabbitmq-ha-0  --namespace=nsb-rabbit hostname            // container hostname
+	# kubectl exec -it my-rabbit-rabbitmq-ha-0  --namespace=nsb-rabbit -- uname -r           // container linux version
+	# kubectl exec -it my-rabbit-rabbitmq-ha-0  --namespace=nsb-rabbit -- cat /proc/version  // container linux version
+	# NOT--> kubectl exec -it my-rabbit-rabbitmq-ha-0  --namespace=nsb-rabbit -- cat /etc/*{release,version}
+}
+
+{
+kubectl exec -ti pod/pub-v1-5bdfb686b9-gd2k5 -- bash // kubectl exec -it ....
+		  -i, --stdin=false: Pass stdin to the container
+		  -t, --tty=false: Stdin is a TTY
+kubectl run -i --tty --rm busybox --image=busybox -- sh    // inject one pod in network // check networking
+		 nc -v -z 172.17.0.9 4222     // nc (ncat) cmd for scan port
+
+kubectl scale deployment <<name>> --replicas=0 -n service 
+kubectl scale deployment <<name>> --replicas=2 -n service
+
+apt-get install iputils-ping
+apt-get install curl
+apt-get install vim-tiny
+apt-get install netcat
+		nc -v -z 172.17.0.9 4222
+apt-get install procps
+}
+
+
+-------------------kube dns check
+{
+kubectl apply -f https://k8s.io/examples/admin/dns/dnsutils.yaml
+kubectl exec -ti dnsutils -- nslookup kubernetes.default
+kubectl get pods --namespace=kube-system -l k8s-app=kube-dns
+kubectl exec -ti busybox cat /etc/resolv.conf
+for p in $(kubectl get pods --namespace=kube-system -l k8s-app=kube-dns -o name); do kubectl logs --namespace=kube-system $p; done
+kubectl get ep kube-dns --namespace=kube-system
+}
+
+------------------vim editor
+{
+apt-get install vim-tiny
+vi filename
+press i = insert
+esc = read mode
+arrow key = navigate
+:q! =exit without save
+:wq = save and exit
+}
+
+kubectl expose service pub-v1 --port=80 --target-port=8085 --type=NodePort --name=pub-expose
+
+helm list
+helm install 
+helm search hub HUBNM
+helm search repo REPONM
+helm show values NM
+helm lint HELMNM
+
+kompose up -f website-sample.yml
+kompose convert -f website-sample.yml
+kompose down  -f website-sample.yml
+
+--------------------------helm
+{
+	@ helm fetch --untar stable/rabbitmq-ha
+	@ helm install . --name rmq-old --namespace rmq-old
+	@ https://hub.helm.sh/
+
+	@1 choco install kubernetes-helm
+	@2 kubectl config use-context docker-for-desktop  // Select the Kubernetes context you want to use
+	@3 helm init
+	@4 helm repo add banzaicloud-stable https://kubernetes-charts.banzaicloud.com/branch/master
+	@5 helm repo list
+	@6 helm install banzaicloud-stable/logging-operator // Install with default values
+	@7 helm install banzaicloud-stable/logging-operator -f example.yaml // Install with custom yaml file
+	@8 helm install banzaicloud-stable/logging-operator --set rbac.enabled=false  // Install with value overrides
+	@9 helm create mychart
+	@10 tree -d mychart
+	@11 helm install --dry-run --debug ./mychart
+	@12 helm install --dry-run --debug ./mychart --set service.internalPort=8080
+	@13 helm install example ./mychart --set service.type=NodePort
+	@14 helm lint ./mychart
+	@15 helm install example2 ./mychart --set service.type=NodePort
+	@16 helm package ./mychart
+	@17 helm install example3 mychart-0.1.0.tgz --set service.type=NodePort
+	@18 helm serve
+	@19 helm dep update ./mychart
+}
+
+$ doskey /LISTSIZE=1000
+$ doskey /HISTORY > E:\experi-Lab\cmd-26-jan.txt
+
+docker-machine env
+minikube docker-env
+bash > eval $(minikube docker-env)
+minikube ssh
+	$ docker images
+minikube ip
+
+
+----------------------help-----------------------
+ pod (po), service (svc), replicationcontroller (rc), deployment (deploy), replicaset (rs)
+
+Examples:
+  # Create a service for a replicated nginx, which serves on port 80 and connects to the containers on port 8000.
+  kubectl expose rc nginx --port=80 --target-port=8000
+
+  # Create a service for a replication controller identified by type and name specified in "nginx-controller.yaml",
+which serves on port 80 and connects to the containers on port 8000.
+  kubectl expose -f nginx-controller.yaml --port=80 --target-port=8000
+
+  # Create a service for a pod valid-pod, which serves on port 444 with the name "frontend"
+  kubectl expose pod valid-pod --port=444 --name=frontend
+
+  # Create a second service based on the above service, exposing the container port 8443 as port 443 with the name
+"nginx-https"
+  kubectl expose service nginx --port=443 --target-port=8443 --name=nginx-https
+
+  # Create a service for a replicated streaming application on port 4100 balancing UDP traffic and named 'video-stream'.
+  kubectl expose rc streamer --port=4100 --protocol=UDP --name=video-stream
+
+  # Create a service for a replicated nginx using replica set, which serves on port 80 and connects to the containers on
+port 8000.
+  kubectl expose rs nginx --port=80 --target-port=8000
+
+  # Create a service for an nginx deployment, which serves on port 80 and connects to the containers on port 8000.
+  kubectl expose deployment nginx --port=80 --target-port=8000
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<command>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+
+

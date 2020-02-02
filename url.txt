@@ -1,0 +1,65 @@
+Google :
+dot net console application deploy in docker container
+kubernetes pod to pod communication example github
+
+
+https://channel9.msdn.com/Series/Docker-for-NET-Developers/Multi-container-ASPNET-5-apps-with-Nginx-and-Redis
+https://www.mirantis.com/blog/multi-container-pods-and-container-communication-in-kubernetes/
+https://www.ibm.com/cloud/garage/content/course/helm-fundamentals/helm-def
+https://docs.min.io/docs/distributed-minio-quickstart-guide.html
+https://docs.bitnami.com/kubernetes/how-to/deploy-application-kubernetes-helm/
+https://github.com/bitnami/charts/tree/master/bitnami
+
+
+Check:
+https://www.ben-morris.com/using-docker-to-build-and-deploy-net-core-console-applications/
+https://itnext.io/overview-of-nats-streaming-ea0e80449507
+
+
+https://docs.nats.io/
+https://github.com/nats-io/nats.net
+http://nats-io.github.io/nats.net/
+
+
+25Jan
+https://codeburst.io/using-rabbitmq-for-microservices-communication-on-docker-a43840401819
+https://www.codeproject.com/Articles/1267590/Developing-Microservices-with-NET-Core-2-1-RabbitM
+https://www.katacoda.com/javajon/courses/kubernetes-applications/rabbitmq
+https://www.stevejgordon.co.uk/asp-net-core-2-ihostedservice
+GD-->  https://docs.particular.net/samples/hosting/docker/
+GD--> https://docs.particular.net/nservicebus/dotnet-templates#nservicebus-docker-container
+HELM GD--> https://banzaicloud.com/blog/creating-helm-charts/
+
+1Feb
+VGD--> https://cloudnativelabs.github.io/post/2017-04-18-kubernetes-networking/
+GD--> https://kubernetes.io/docs/concepts/services-networking/connect-applications-service/
+https://github.com/IBM/kubernetes-networking
+VGD--> https://matthewpalmer.net/kubernetes-app-developer/articles/kubernetes-networking-guide-beginners.html
+Helm--> https://medium.com/@satya.sreenivas/run-nats-streaming-on-ibm-cloud-kubernetes-service-845b214d3469
+https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/
+GD--> https://github.com/gruntwork-io/helm-kubernetes-services/tree/master/charts/k8s-service
+https://medium.com/ingeniouslysimple/deploying-kubernetes-applications-with-helm-81c9c931f9d3
+https://github.com/gruntwork-io/helm-kubernetes-services/tree/master/charts/k8s-service
+VGD--> https://www.ibm.com/cloud/blog/quick-example-helm-chart-for-kubernetes
+
+NETWORK TEST-> https://github.com/mhausenblas/kubernetes.github.io/blob/master/docs/concepts/services-networking/dns-pod-service.md
+https://livebook.manning.com/book/kubernetes-in-action/chapter-3/125
+https://matthewpalmer.net/kubernetes-app-developer/articles/multi-container-pod-design-patterns.html
+
+https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

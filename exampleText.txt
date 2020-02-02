@@ -1,0 +1,156 @@
+--------------three-pods.yaml---------------
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: three-containers
+spec:
+  restartPolicy: Never
+  containers:
+
+  - name: sender-container
+    image: insights/sender
+
+  - name: receiver-container
+---------------------------------Example-2--------------
+version: '2.1'
+services:
+ rabbitmq:
+    container_name: "4340_rabbitmq"
+    tty: true
+    image: rabbitmq:management
+    ports:
+      - 15672:15672
+      - 15671:15671
+      - 5672:5672
+    volumes:
+      - ./rabbitmq/lib:/var/lib/rabbitmq
+ new_user_notification:
+    container_name: "app_new_user_notification"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - ./un.env
+    links:
+      - rabbitmq
+    depends_on:
+      - rabbitmq
+    command: ["./wait-for-it.sh", "rabbitmq:5672", "-t", "120", "--", "node", "newusernotification.js"]
+--------------------------------------------------HostNetwotk----------------
+apiVersion: v1
+kind: ReplicationController
+metadata:
+ name: worker
+ namespace: default
+spec:
+ replicas: 4
+ selector:
+   name: worker
+ template:
+   metadata:
+     labels:
+       name: worker
+   spec:
+    hostNetwork: true
+    containers:
+       - image: 10.0.0.1:5000/worker
+         name: worker
+         imagePullPolicy: IfNotPresent
+		 
+--------2--official
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox
+  namespace: default
+spec:
+  containers:
+  - image: busybox:1.28
+    command:
+      - sleep
+      - "3600"
+    imagePullPolicy: IfNotPresent
+    name: busybox
+  restartPolicy: Always
+  hostNetwork: true
+  dnsPolicy: ClusterFirstWithHostNet
+  
+----------------------------2 official : https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/
+apiVersion: v1
+kind: Service
+metadata:
+  name: default-subdomain
+spec:
+  selector:
+    name: busybox
+  clusterIP: None
+  ports:
+  - name: foo # Actually, no port is needed.
+    port: 1234
+    targetPort: 1234
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox1
+  labels:
+    name: busybox
+spec:
+  hostname: busybox-1
+  subdomain: default-subdomain
+  containers:
+  - image: busybox:1.28
+    command:
+      - sleep
+      - "3600"
+    name: busybox
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox2
+  labels:
+    name: busybox
+spec:
+  hostname: busybox-2
+  subdomain: default-subdomain
+  containers:
+  - image: busybox:1.28
+    command:
+      - sleep
+      - "3600"
+    name: busybox
+	
+---------------------------------------------dns setting
+---------------1
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dnsutils
+  namespace: default
+spec:
+  containers:
+  - name: dnsutils
+    image: gcr.io/kubernetes-e2e-test-images/dnsutils:1.3
+    command:
+      - sleep
+      - "3600"
+    imagePullPolicy: IfNotPresent
+  restartPolicy: Always
+----------------2
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox
+  labels:
+    name: busybox
+spec:
+  containers:
+  - name: busybox
+    image: busybox
+    command: 
+      - sleep 
+      - "3600"
+    imagePullPolicy: IfNotPresent
+  restartPolicy: Always
