@@ -104,8 +104,9 @@ kubectl exec -ti pod/pub-v1-5bdfb686b9-gd2k5 -- bash // kubectl exec -it ....
 		  -i, --stdin=false: Pass stdin to the container
 		  -t, --tty=false: Stdin is a TTY
 kubectl run -i --tty --rm busybox --image=busybox -- sh    // inject one pod in network // check networking
-		 nc -v -z 172.17.0.9 4222     // nc (ncat) cmd for scan port
-
+		nc -v -z 172.17.0.9 4222     // nc (ncat) cmd for scan port
+		wget 172.17.0.9:4222
+		
 kubectl scale deployment <<name>> --replicas=0 -n service 
 kubectl scale deployment <<name>> --replicas=2 -n service
 

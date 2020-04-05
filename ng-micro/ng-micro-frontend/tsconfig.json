@@ -1,0 +1,41 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "jwt": [
+        "dist/jwt/jwt",
+        "dist/jwt"
+      ],
+      "eventbus": [
+        "dist/eventbus/eventbus",
+        "dist/eventbus"
+      ],
+      "common": [
+        "dist/common/common",
+        "dist/common"
+      ],
+      "db": [
+        "dist/db/db",
+        "dist/db"
+      ]
+    }
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  }
+}

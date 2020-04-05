@@ -1,0 +1,106 @@
+npm install -g @angular/cli
+
+ng new ng-micro --createApplication=false
+ng new ng-micro --createApplication=false --directory=frontend --interactive=false
+
+
+ng g application adduser --prefix=ad 
+ng g application updateuser --prefix=up
+ng g application edituser --prefix=ed --routing=true --style=scss
+ng g application login --prefix=lg --routing=true --style=scss
+ng g application navbar --prefix=nv --routing=true --style=scss
+ng g application web --prefix=web --routing=true --style=scss
+
+ng g library jwt --prefix=jwt
+ng g library eventbus --prefix=ev
+ng g library common --prefix=cm
+ng g library db --prefix=db
+
+ng add @angular/elements --project=login
+ng add @angular/elements --project=navbar
+
+ng g class DummyUsers  --project=db
+
+cd projects/db
+cd dist/db && npm pack
+
+ng build login --prod 
+ng serve login
+
+
+ng build login --prod --baseHref /gatling/
+
+npm i -g http-server
+
+
+    "db": "ng build --project=db && cd dist/db && npm pack",
+    "jwt": "ng build --project=jwt && cd dist/jwt && npm pack",
+    "login": "ng build --project=login && http-server ./dist/login -o -p 8181",
+    "login:package": "jscat ./dist/login/runtime-es2015.js ./dist/login/polyfills-es2015.js ./dist/login/main-es2015.js --out ./projects/web/src/assets/js/login-element.js",
+    "login:webc": "ng build --project=login --prod --output-hashing=none && npm run login:package",
+    "website": "ng build --project=web  && http-server ./dist/web -o -p 8182",
+    "website:run": "http-server ./dist/web -o -p 8182",
+    "updateuser": "ng build --project=updateuser --prod --output-hashing=none && http-server ./dist/updateuser -o -p 8183",
+    "lib:all": "npm run db && npm run jwt"
+
+ng add @angular/material
+ng add @angular/material --project=gatling
+ng g component footer --project=ng7-common
+ng generate service hello-world --project=tools
+ng generate application administration --style=scss --routing=true
+ng generate application gatling --style=scss --routing=true
+
+
+"scripts": {
+  //...
+  "packagr": "ng-packagr -p ng-package.json"
+}
+
+npm pack
+npm install ../some-relative-path/dist/my-component-library-0.0.0.tgz
+
+
+ng build gatling --prod --baseHref /gatling/
+
+docker
+FROM nginx:1.15.9-alpine
+ARG APPLICATION
+COPY nginx.conf /etc/nginx/nginx.conf
+WORKDIR /usr/share/nginx/html
+COPY dist/$APPLICATION .
+RUN ls -laR .
+EXPOSE 80
+
+
+NGINX
+worker_processes  1;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    server {
+        listen 80 default_server;
+        server_name  localhost;
+
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+        include /etc/nginx/mime.types;
+
+        gzip on;
+        gzip_min_length 1000;
+        gzip_proxied expired no-cache no-store private auth;
+        gzip_types text/plain text/css application/json application/javascript application/x-javascript text/xml application/xml application/xml+rss text/javascript;
+
+        location / {
+            try_files $uri $uri/ /index.html;
+        }
+    }
+}
+
+
+
+
+
+

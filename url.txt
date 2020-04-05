@@ -48,6 +48,9 @@ https://matthewpalmer.net/kubernetes-app-developer/articles/multi-container-pod-
 
 https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/
 
+ng-micro
+https://octoperf.com/blog/2019/08/22/kraken-angular-workspace-multi-application-project/
+
 
 
 
