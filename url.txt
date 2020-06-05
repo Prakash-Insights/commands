@@ -52,7 +52,9 @@ ng-micro
 https://octoperf.com/blog/2019/08/22/kraken-angular-workspace-multi-application-project/
 
 ngTest
-
+https://www.concretepage.com/angular/angular-test-http-get
+https://www.digitalocean.com/community/tutorials/angular-testing-httpclient
+https://codecraft.tv/courses/angular/unit-testing/http-and-jsonp/
 
 
 
