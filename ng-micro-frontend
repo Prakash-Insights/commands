@@ -41,7 +41,7 @@ npm i -g http-server
     "website": "ng build --project=web  && http-server ./dist/web -o -p 8182",
     "website:run": "http-server ./dist/web -o -p 8182",
     "updateuser": "ng build --project=updateuser --prod --output-hashing=none && http-server ./dist/updateuser -o -p 8183",
-    "lib:all": "npm run db && npm run jwt"
+    "lib:all": "npm run db && npm run jwt"a
 
 ng add @angular/material
 ng add @angular/material --project=gatling

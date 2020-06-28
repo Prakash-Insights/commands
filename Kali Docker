@@ -1,0 +1,52 @@
+ Kali Linux Inside Docker
+rfornal profile image bob.js
+Mar 14 ・1 min read  
+#security #linux #docker #tech
+Kali Linux
+
+I went to a talk recently on security. Kali Linux was mentioned and I started looking at what this meant.
+
+I was thinking of setting up a machine to explore when a co-worker mentioned building a Docker Container with Kali Linux inside it. With some quick searching I found that they already had Kali Linux dockerized ... I settled on the "ROLLING" version.
+
+THIS ARTICLE IS INTENDED PRIMARILY FOR MYSELF.
+
+Here are the abbreviated notes I put together ...
+From ... Kali Containers Docker
+Docker Installation and Update
+
+$ docker pull kalilinux/kali-rolling
+
+$ docker run -ti --rm -v /Users/bob.fornal/Projects/pentest/root:/root -v /Users/bob.fornal/Projects/pentest/postgres:/var/lib/postgresql kalilinux/kali-rolling /bin/bash
+
+
+$ docker run -ti --rm  kalilinux/kali-rolling /bin/bash
+
+
+
+# apt-get update && apt-get install metasploit-framework
+
+The steps from this point forward should be re-run each time you start Kali Linux in this Docker Container (the run command below).
+
+# apt update
+
+# apt upgrade
+
+# apt dist-upgrade
+
+# apt autoremove
+
+# apt clean
+Tooling (that I still need to explore in more detail)
+
+# msfconsole
+Commit Changes from Update Above
+Image Information
+
+$ docker ps -l
+
+$ docker images -a
+Commit Commands
+
+$ docker commit [id] kalilinux/kali-rolling
+
+$ docker run -t -i kalilinux/kali-rolling /bin/bash
