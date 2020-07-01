@@ -192,6 +192,67 @@ minikube ssh
 	$ docker images
 minikube ip
 
+-------------------------------------------------
+"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"  --disable-web-security --disable-gpu --user-data-dir=~/chromeTemp
+-------------------------------------------------
+UI
+yarn add npm-package-nm@2.0.0 --registry http://private-repository.com:8080
+npm link LIB_NM
+ng build --prod --watch
+
+yarn global bin
+yarn global add @angular/cli@9.1.1
+
+ng new test-project --skip-install
+cd test-project
+yarn
+
+yarn install --force
+ng set --global packageManager=yarn
+-------------------------------------------------
+"dist/LIB_NM" ->  npm link
+npm link LIB_NM
+angular.json file -> in architect -> in build -> in options -> add "preserveSymlinks": true (to link the library)
+
+library -> 
+ng LIB_NM --watch --prod
+
+Main Project -> ng serve
+-------------------------------------------------
+
+"C:\Program Files\7-Zip\7z.exe" a -t7z lib.7z FOLDER_NM\ -mx0 -xr!node_modules -xr!dist -xr!bin -xr!obj -x!package-lock.json
+
+"C:\Program Files\7-Zip\7z.exe" a -t7z ui.7z FOLDER_NM\ -mx0 -xr!node_modules -xr!dist -xr!bin -xr!obj -x!package-lock.json
+-------------------------------------------------
+Set-Alias -Name k -Value kubectl
+-------------------------------------------------
+git status
+git branch -a
+git fetch --all
+
+git checkout feature/../..
+git checkout develop
+
+git add .
+git commit -m "commit message"
+git push
+git pull
+
+---------------------------------------------
+dotnet publish -c Release -o out
+
+dotnet publish -c Release -f netcoreapp3.1  -r linux-x64 -o p-out
+dotnet publish -c Release -f netcoreapp3.1  -r linux-x64 -o w-out
+
+dotnet publish -c Release -f netcoreapp3.1  -o p-out
+dotnet publish -c Release -f netcoreapp3.1  -o w-out
+
+---------------------------------------------
+ 
+ vs code lint useful extension  (official)
+ https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint
+ https://marketplace.visualstudio.com/items?itemName=mkaufman.HTMLHint
+ https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin
 
 ----------------------help-----------------------
  pod (po), service (svc), replicationcontroller (rc), deployment (deploy), replicaset (rs)
