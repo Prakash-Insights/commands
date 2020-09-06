@@ -1,0 +1,38 @@
+<div class="contentpart container">
+    <div class="row p-o pl-3 mb-3 mt-3">
+        <h3>Users</h3>
+    </div>
+    <div class="row p-o table-responsive">
+        <!-- <div class="card m-3 w-100" *ngFor="let post of posts">
+            <div class="card-body">
+                <h4 class="card-title row">
+                    <div class="col-9">{{ post.title | uppercase}} </div>
+                    <div class="col-3 text-right">
+                        <a class="mr-2 cursor-pointer" (click)="openModal(post)"> <i-bs name="pencil-square" class="text-primary" width="1rem" height="3rem">
+                            </i-bs></a>
+                        <a class=" cursor-pointer" (click)="deleteModal(post)"> <i-bs name="archive" class="text-primary c-red" width="1rem" height="3rem"></i-bs></a>
+                    </div>
+                </h4>
+                <small>
+                    <strong>Name: </strong> {{ post.name }}</small>
+                <p>{{ post.body }}</p>
+            </div>
+        </div> -->
+        <table class="table">
+            <thead>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Website</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td>{{user.name}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.phone}}</td>
+                    <td>{{user.website}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

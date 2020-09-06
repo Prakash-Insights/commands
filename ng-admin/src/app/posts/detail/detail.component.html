@@ -1,0 +1,90 @@
+<div class="contentpart container" *ngIf="post && !loading">
+    <div class="row p-o pl-3">
+            <a class="mr-2 cursor-pointer" routerLink="/posts"> <i-bs name="arrow-left" class="text-primary" width="1rem" height="3rem">
+                </i-bs> Back</a>
+    </div>
+
+    <div class="row p-o pl-3">
+        <h3>User Information</h3>
+    </div>
+    <div class="row p-o">
+        <div class="card m-3 w-100">
+            <div class="card-body">
+                <div class="row mb-2">
+                    <div class="col-4">
+                        <div class="col-md-6">
+                            <strong>Name </strong>
+                        </div>
+                        <div class="col-md-6">{{ post?.user?.name }}</div>
+                    </div>
+                    <div class="col-4">
+                        <div class="col-md-6">
+                            <strong>Email </strong>
+                        </div>
+                        <div class="col-md-6">{{ post?.user?.email }}</div>
+                    </div>
+                    <div class="col-4">
+                        <div class="col-md-6">
+                            <strong>phone </strong>
+                        </div>
+                        <div class="col-md-6">{{ post?.user?.phone }}</div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-4">
+                        <div class="col-md-6">
+                            <strong>Website </strong>
+                        </div>
+                        <div class="col-md-6">{{ post?.user?.website }}</div>
+                    </div>
+                    <div class="col-4">
+                        <div class="col-md-6">
+                            <strong>Company </strong>
+                        </div>
+                        <div class="col-md-6">{{ post?.user?.company?.name }}</div>
+                    </div>
+                    <div class="col-4">
+                        <div class="col-md-6">
+                            <strong>street </strong>
+                        </div>
+                        <div class="col-md-6">{{ post?.user?.address?.street }}</div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                        <div class="col-4">
+                            <div class="col-md-6">
+                                <strong>Suite </strong>
+                            </div>
+                            <div class="col-md-6">{{ post?.user?.address?.suite }}</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="col-md-6">
+                                <strong>City </strong>
+                            </div>
+                            <div class="col-md-6">{{ post?.user?.address?.city }}</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="col-md-6">
+                                <strong>ZipCode </strong>
+                            </div>
+                            <div class="col-md-6">{{ post?.user?.address?.zipcode }}</div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row p-o pl-3">
+        <h3>Comments</h3>
+    </div>
+    <div class="row p-o">
+        <div class="card m-3 w-100" *ngFor="let comment of post?.comments">
+            <div class="card-body">
+                <div>
+                    <strong class="mr-2">Name: </strong> {{ comment.name }}</div>
+                <div>
+                    <strong class="mr-2">Email: </strong> {{ comment.email }}</div>
+                <p>{{ comment.body }}</p>
+            </div>
+        </div>
+    </div>

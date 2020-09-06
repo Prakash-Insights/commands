@@ -1,0 +1,20 @@
+<div class="contentpart container" *ngIf="!loading">
+    <div class="row p-o pl-3">
+            <div class="col-xl-3 col-sm-6 py-2">
+                <div class="card bg-success text-white h-100">
+                    <div class="card-body bg-success">
+                        <h6 class="text-uppercase">Users</h6>
+                        <h1 class="display-4"><span class="cursor-pointer" routerLink="/users">{{usersCount}}</span></h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 py-2">
+                <div class="card text-white bg-danger h-100">
+                    <div class="card-body bg-danger">
+                        <h6 class="text-uppercase">Posts</h6>
+                        <h1 class="display-4 cursor-pointer"> <span class="cursor-pointer" routerLink="/posts">{{postsCount}}</span></h1>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

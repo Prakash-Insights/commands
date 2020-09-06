@@ -1,0 +1,20 @@
+<nav class="navbar">
+    <div class="container">
+        <div class="col p-0 row">
+            <div class="col-9">
+                <ul class="navbar-nav">
+                    <li *ngFor="let item of menu">
+                        <a [routerLink]="item.link" routerLinkActive="active">
+                            {{item.title}}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-3 text-right">
+                <a routerLink="/" routerLinkActive="active" (click) = "logOut()">
+                    Logout
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>

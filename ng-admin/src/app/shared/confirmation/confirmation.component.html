@@ -1,0 +1,19 @@
+<ng-template #confTemplate>
+        <div class="add_rol_modal">
+          <!-- <div class="modal-header">
+            <h4 class="modal-title pull-left">Title</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="confModalRef.hide()">
+              <span aria-hidden="true"><img src="assets/images/close-icon.png" alt="" /></span>
+            </button>
+          </div> -->
+          <div class="modal-body pb-3 add_user_popup">
+            {{text}}
+          </div>
+          <div class="modal-footer">
+            <a class="btn btn-primary float-left" (click)="closeModal(true)"> Yes</a>
+            <a class="close_popup cursor-pointer" (click)="closeModal(false)">
+              No
+            </a>
+          </div>
+        </div>
+      </ng-template>
