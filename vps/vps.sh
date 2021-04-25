@@ -84,4 +84,9 @@ echo "nginx version------- $(nginx -v)"
 
 # mongodump --archive=db_ohc_new  --uri=mongodb+srv://ohc:ohc@clustername.1cqxju.mongodb.net/db_ohc 
 # mongorestore --archive="db_ohc_new" mongodb+srv://ohc:ohc@clustername.12l8kp.mongodb.net/db_ohc 
-# mongorestore --archive="db_ohc_new" mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false 
+# mongorestore --archive="db_ohc_new" mongodb://127.0.0.1:27017/?readPreference=primary&ssl=false 
+# show dbs
+# use ohc
+# db.dropDatabase()
+# show tables
+# show collections
