@@ -81,3 +81,7 @@ echo "ng version------- $(ng --version | grep 'Angular CLI' )"
 echo "mongo version------- $(mongo --version | grep 'shell version' )"
 echo "nginx version------- $(nginx -v)" 
 # Port Forwading in Virtual Box - NAT network > Port forward > Host - 8080 > Guest 80 > It will show nginx in host machine
+
+# mongodump --archive=db_ohc_new  --uri=mongodb+srv://ohc:ohc@clustername.1cqxju.mongodb.net/db_ohc 
+# mongorestore --archive="db_ohc_new" mongodb+srv://ohc:ohc@clustername.12l8kp.mongodb.net/db_ohc 
+# mongorestore --archive="db_ohc_new" mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false 
