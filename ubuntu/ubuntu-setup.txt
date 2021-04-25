@@ -1,0 +1,192 @@
+---------------------Common Command
+sudo apt install curl 
+zip -r ctas2.zip . -x *.git* */node_modules/**\*
+#tczvF69PY4N6QW7abc 
+
+---------------------VS Code
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg 
+sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/ 
+sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list' 
+
+sudo apt install apt-transport-https 
+sudo apt update 
+sudo apt install code # or code-insiders  
+
+---------------------NVM
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+source ~/.bashrc
+nvm list
+nvm install lts/fermium
+nvm use v14.16.0
+
+---------------------Node
+curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash - 
+#curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+sudo apt-get install -y nodejs 
+
+---------------------Angular CLI
+npm install -g @angular/cli 
+
+---------------------XAMPP 
+
+---------------------MongoDB 
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list 
+wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add - 
+sudo apt-get install gnupg 
+wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add - 
+sudo apt-get update 
+sudo apt-get install -y mongodb-org 
+
+sudo systemctl start mongod 
+sudo systemctl daemon-reload 
+sudo systemctl status mongod 
+sudo systemctl enable mongod 
+mongo 
+
+(https://docs.mongodb.com/manual/tutorial/enable-authentication/) 
+
+ps --no-headers -o comm 1 
+sudo systemctl stop mongod 
+sudo systemctl restart mongod 
+sudo service mongod stop 
+sudo apt-get purge mongodb-org* 
+sudo rm -r /var/log/mongodb 
+sudo rm -r /var/lib/mongodb 
+
+(https://docs.mongodb.com/compass/current/install) 
+
+wget https://downloads.mongodb.com/compass/mongodb-compass_1.24.6_amd64.deb 
+sudo dpkg -i mongodb-compass_1.24.6_amd64.deb 
+mongodb-compass 
+
+---------------------Git 
+sudo apt install git 
+git –version 
+git config --global user.name "abc" 
+git config --global user.email web@linuxconfig.org 
+git config –list 
+
+---------------------Skype 
+wget https://go.skype.com/skypeforlinux-64.deb 
+sudo apt install ./skypeforlinux-64.deb 
+
+---------------------NotepadQQ 
+sudo apt-get update 
+sudo apt-get install notepadqq   
+Notepadqq 
+sudo apt-get remove --autoremove notepadqq 
+
+---------------------Google Chrome 
+wget --version 
+sudo apt install wget 
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb 
+sudo dpkg -i google-chrome-stable_current_amd64.deb 
+google-chrome 
+
+---------------------VLC 
+sudo add-apt-repository ppa:videolan/stable-daily 
+sudo apt-get update 
+sudo apt-get install vlc 
+
+---------------------Virtual Box 
+sudo apt update 
+sudo apt install virtualbox virtualbox-ext-pack 
+
+---------------------Google Drive 
+sudo add-apt-repository ppa:nilarimogard/webupd8 
+sudo apt-get update 
+sudo apt-get install grive 
+mkdir -p ~/grive 
+cd ~/grive 
+grive -a 
+cd ~/grive 
+grive 
+
+---------------------Robo-3T/ Studio-3T 
+download : https://robomongo.org/download 
+tar -xvzf tar-file 
+sudo mkdir /usr/local/bin/robo3t 
+sudo mv  folder-file/* /usr/local/bin/robo3t 
+cd /usr/local/bin/robo3t/bin 
+sudo chmod +x robo3t ## run command only if robo3t isn't executable file 
+./robo3t   ## or ./studio-3t 
+
+---------------------Yarn
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt update && sudo apt install yarn
+yarn --version
+
+---------------------Docker
+sudo apt-get remove docker docker-engine docker.io containerd runc
+sudo apt-get update
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+	
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo apt-key fingerprint 0EBFCD88
+
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+   
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io   
+apt-cache madison docker-ce
+
+---------------------Postman 
+sudo snap install postman 
+
+
+---------------------Anydesk 
+wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | sudo apt-key add - 
+echo "deb http://deb.anydesk.com/ all main" | sudo tee /etc/apt/sources.list.d/anydesk-stable.list 
+sudo apt update 
+sudo apt install anydesk 
+sudo apt remove anydesk
+
+---------------------Opera
+wget -qO- https://deb.opera.com/archive.key | sudo apt-key add -
+sudo add-apt-repository "deb [arch=i386,amd64] https://deb.opera.com/opera-stable/ stable non-free"
+sudo apt update
+sudo apt install opera-stable
+
+---------------------Microsoft Edge
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list'
+sudo rm microsoft.gpg
+sudo apt update
+sudo apt install microsoft-edge-dev
+
+---------------------Powershell
+sudo apt-get update
+sudo apt-get install -y wget apt-transport-https software-properties-common
+wget -q https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+sudo apt-get update
+sudo add-apt-repository universe
+sudo apt-get install -y powershell
+pwsh
+
+---------------------
+
+
+
+---------------------
+
+
+
+---------------------
+
+
+
+
+
+
+
