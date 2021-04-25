@@ -59,9 +59,11 @@ sudo nginx -t
 # sudo systemctl restart nginx
 # sudo nginx –t
 # hostname -i
+
 # sudo nano /etc/hosts
 # 127.0.1.1 test_domain.com www.test_domain.com
-# npm i pm2
+
+# npm i -g pm2
 
 # Checklist
 # /var/www/html – Website content as seen by visitors.
