@@ -29,6 +29,15 @@ Docker-------------------
 	sudo docker run -d -p 8080:80 --name ngtest3 insight/ng:3
 	sudo docker exec -ti 510173402fcd ls app
 	sudo docker cp 510173402fcd:app/3 .  // dot means current dir	
+	
+	find linux version
+	# docker/kubectl exec -it my-rabbit-rabbitmq-ha-0  --namespace=nsb-rabbit -- uname -r           // container linux version
+	
+	apk add = apt install = apt-get install
+	apk add --update go=1.16.3
+	apk update/upgrade = apt update/upgrade
+	apk del = apt remove
+	# apk add is working in alpine/busybox docker image
 }
 
 Docker-Compose-------------------
