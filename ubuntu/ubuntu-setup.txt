@@ -1,7 +1,7 @@
 ---------------------Common Command
 sudo apt install curl 
+sudo apt install pavucontrol  # Audio control system
 zip -r ctas2.zip . -x *.git* */node_modules/**\*
-#tczvF69PY4N6QW7abc 
 
 ---------------------VS Code
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg 
@@ -12,6 +12,11 @@ sudo apt install apt-transport-https
 sudo apt update 
 sudo apt install code # or code-insiders  
 
+---------------------Node
+curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash - 
+#curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+sudo apt-get install -y nodejs 
+
 ---------------------NVM
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 source ~/.bashrc
@@ -19,15 +24,9 @@ nvm list
 nvm install lts/fermium
 nvm use v14.16.0
 
----------------------Node
-curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash - 
-#curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-sudo apt-get install -y nodejs 
-
 ---------------------Angular CLI
 npm install -g @angular/cli 
 
----------------------XAMPP 
 
 ---------------------MongoDB 
 echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list 
@@ -174,6 +173,36 @@ sudo add-apt-repository universe
 sudo apt-get install -y powershell
 pwsh
 
+---------------------Dotnet Core
+wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+sudo apt-get update
+sudo apt-get install -y apt-transport-https
+sudo apt-get update
+sudo apt-get install -y dotnet-sdk-5.0
+sudo apt-get install -y aspnetcore-runtime-5.0
+sudo apt-get install -y dotnet-runtime-5.0
+
+--------------------- ZOOM
+wget https://zoom.us/client/latest/zoom_amd64.deb
+sudo apt install ./zoom_amd64.deb
+sudo apt remove zoom
+
+--------------------- MS Team
+sudo curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main" > /etc/apt/sources.list.d/teams.list'
+sudo apt update
+sudo apt install teams
+sudo apt remove teams
+sudo dpkg -r teams
+
+---------------------XAMPP
+chmod 755 xampp-linux-*-installer.run
+Run the installer
+sudo ./xampp-linux-*-installer.run
+sudo /opt/lampp/lampp start
+sudo /opt/lampp/lampp stop
+
 ---------------------
 
 
@@ -185,6 +214,9 @@ pwsh
 ---------------------
 
 
+
+
+---------------------
 
 
 
