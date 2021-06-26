@@ -237,6 +237,8 @@ Main Project -> ng serve
 "C:\Program Files\7-Zip\7z.exe" a -t7z lib.7z FOLDER_NM\ -mx0 -xr!node_modules -xr!dist -xr!bin -xr!obj -x!package-lock.json
 
 "C:\Program Files\7-Zip\7z.exe" a -t7z ui.7z FOLDER_NM\ -mx0 -xr!node_modules -xr!dist -xr!bin -xr!obj -x!package-lock.json
+
+find . -name "node_modules" -exec rm -rf '{}' +  // remove all node_modules from folders (linux)
 -------------------------------------------------
 Set-Alias -Name k -Value kubectl
 -------------------------------------------------
