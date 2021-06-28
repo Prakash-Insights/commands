@@ -130,7 +130,7 @@ apt-get install iputils-ping
 apt-get install curl
 apt-get install vim-tiny
 apt-get install netcat
-		nc -v -z 172.17.0.9 4222
+nc -v -z 172.17.0.9 4222
 apt-get install procps
 }
 

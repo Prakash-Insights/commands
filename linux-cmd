@@ -1,0 +1,96 @@
+sudo nautilus  //USB HDD open with root permission
+
+
+--------------------  
+Github process
+git config --global credential.helper cache 
+git config --global credential.https://github.com.username foo 
+git clone https://github.com/foo/repository.git 
+
+----------
+sudo lsof -i -P -n | grep LISTEN 
+sudo netstat -tulpn | grep LISTEN 
+sudo lsof -i:22 ## see a specific port such as 22 ## 
+sudo nmap -sTU -O IP-address-Here 
+find . -type f -mtime 90  // last modified file in entire system
+find . -name "node_modules" -exec rm -rf '{}' +  // remove all node_modules from folders
+
+---------- 
+timedatectl set-local-rtc 1 --adjust-system-clock  #set time in dual boot 
+
+----------- 
+sed '/^$/d' input.txt > output.txt   # replace file without blank line 
+
+------------ 
+ip route get 1 | sed -n 's/^.*src \([0-9.]*\) .*$/\1/p'  # current IP Address 
+netstat -pan | grep 80 
+ifconfig | grep inet 
+
+---------- 
+sudo lshw -C network    # network name 
+lspci | grep Network      # network name 
+
+---------- 
+sudo mokutil --sb-state      # secure boot status 
+sudo apt install mokutil      # secure boot install 
+sudo mokutil --disable-validation 
+sudo mokutil --enable-validation 
+sudo efibootmgr    # EFI Bootmanager status 
+
+---------- 
+tar -zcvf archive-name.tar.gz directory-name   # zip dir 
+scp -r ./uploads  root@192.168.1.1:/var/www/html/angular/ohc/server/    #copy local file to VPS 
+
+---------- 
+Pm2 start app.js 
+Pm2 list 
+Pm2 stop app.js/app 
+
+nginx---------------------------- 
+service nginx restart 
+service nginx start 
+service nginx stop 
+sudo service apache2 stop 
+
+----------
+// Node JS stake out of memory 
+export NODE_OPTIONS=--max-old-space-size=8192 
+
+--------------------  
+ng build --prod --aot 
+export NODE_ENV=production 
+set 
+echo $NODE_ENV 
+printenv 
+printenv | less 
+printenv | more 
+ 
+-------------partition------ 
+sudo parted -l 
+sudo fdisk -l | grep NTFS 
+cd / 
+sudo mkdir /mnt/ntfs1 
+sudo mount -t ntfs /dev/sdb5 /mnt/ntfs1 
+df -hT 
+  
+sudo apt update 
+sudo apt install fuse ntfs-3g 
+sudo mkdir /mnt/ntfs2 
+sudo mount /dev/sda5 -t ntfs-3g -o permissions /mnt/ntfs2 
+sudo blkid 
+-------------partition------ 
+ 
+
+-------- 
+1) npx create-react-app my-app --template redux // understand only // redux-toolkit  
+2) npx create-react-app my-app and implement shopping cart into this 
+-------- 
+npm cache clean --force 
+npm install npm@latest -g 
+npm config set proxy localhost:3000   // EAI_AGAIN error  
+
+-------- 
+chmod 755 xampp-linux-*-installer.run
+Run the installer
+sudo ./xampp-linux-*-installer.run
+
