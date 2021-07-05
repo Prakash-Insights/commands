@@ -7,6 +7,20 @@ git config --global credential.helper cache
 git config --global credential.https://github.com.username foo 
 git clone https://github.com/foo/repository.git 
 
+git config --global user.name "ABC"
+git config --global user.email "ABC"
+git config --list
+
+ssh-keygen -t ed25519 -C "your_email@example.com"  // or
+// enter three times
+// ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+// find .ssh folder in /home/user-name/.ssh   // hidden folder
+copy PUB file data and store it in github.com
+git clone with SSH not HTTPs
+
+
 ----------
 sudo lsof -i -P -n | grep LISTEN 
 sudo netstat -tulpn | grep LISTEN 
@@ -46,7 +60,15 @@ Pm2 start app.js
 Pm2 list 
 Pm2 stop app.js/app 
 
-nginx---------------------------- 
+# next js for development
+pm2 start npm --name "next" -- run dev
+
+# next js for production
+npm run build
+pm2 start npm --name "next" -- start
+pm2 restart all
+
+nginx/apache---------------------------- 
 service nginx restart 
 service nginx start 
 service nginx stop 
@@ -79,6 +101,22 @@ sudo mkdir /mnt/ntfs2
 sudo mount /dev/sda5 -t ntfs-3g -o permissions /mnt/ntfs2 
 sudo blkid 
 -------------partition------ 
+ 
+ 
+-------- mondo db database dump and restore 
+mongodump --archive=db_mb_new  --uri=mongodb+srv://dbmb:password@cluster0.xxxxx.mongodb.net/db_name
+
+Same database copy to other database
+mongorestore --db db_ekart_dev --nsInclude 'new_db_name.*' --archive="db_mb_new" --uri=mongodb+srv://dbmb:password@cluster0.xxxxx.mongodb.net/db_name
+
+Name change and clone to new
+mongorestore --nsInclude 'old_db_name.*' --nsFrom='old_db_name.*' --nsTo='db_ekart_dev.*' --archive="db_mb_new" mongodb+srv://dbmb:password@cluster0.xxxxx.mongodb.net/db_name
+
+Connect database by CMD
+COPY old_db_name --> to new_db_name
+cmd -> mongo mongodb+srv://dbmb:password@cluster0.xxxxx.mongodb.net/db_name
+> show dbs
+--------------------------------------
  
 
 -------- 
