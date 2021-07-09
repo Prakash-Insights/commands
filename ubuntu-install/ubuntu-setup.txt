@@ -203,13 +203,21 @@ sudo ./xampp-linux-*-installer.run
 sudo /opt/lampp/lampp start
 sudo /opt/lampp/lampp stop
 
----------------------
+---------------------FileZilla
+sudo apt install filezilla
 
-
-
----------------------
-
-
+---------------------Kubernetes K8s microk8s
+https://ubuntu.com/kubernetes/install
+sudo snap install microk8s --classic
+sudo usermod -a -G microk8s $USER
+sudo chown -f -R $USER ~/.kube
+su - $USER
+microk8s status --wait-ready
+microk8s enable dashboard dns ingress
+microk8s kubectl get all --all-namespaces
+microk8s dashboard-proxy #chrome://flags/ --> localhost = enabled
+microk8s start
+microk8s stop
 
 ---------------------
 

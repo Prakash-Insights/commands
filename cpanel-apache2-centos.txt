@@ -1,0 +1,31 @@
+cPanel with OS Path : /usr/local/apache/conf
+"/etc/apache2/conf.d/includes/pre_virtualhost_global.conf"
+
+sudo mkdir -p /var/www/example.com/html
+sudo mkdir -p /var/www/example.com/log
+sudo chown -R $USER:$USER /var/www/example.com/html  // $USER environmental variable:
+sudo chmod -R 755 /var/www  // root permissions
+sudo vi /var/www/example.com/html/index.html
+// sites-available
+sudo mkdir /etc/httpd/sites-available /etc/httpd/sites-enabled
+sudo vi /etc/httpd/conf/httpd.conf
+(
+...
+# Supplemental configuration
+#
+# Load config files in the "/etc/httpd/conf.d" directory, if any.
+IncludeOptional conf.d/*.conf
+IncludeOptional sites-enabled/*.conf   // <-------------
+)
+
+sudo vi /etc/httpd/sites-available/example.com.conf
+<VirtualHost *:80>
+    ServerName www.example.com
+    ServerAlias example.com
+    DocumentRoot /var/www/example.com/html
+    ErrorLog /var/www/example.com/log/error.log
+    CustomLog /var/www/example.com/log/requests.log combined
+</VirtualHost>
+
+sudo ln -s /etc/httpd/sites-available/example.com.conf /etc/httpd/sites-enabled/example.com.conf
+https://www.digitalocean.com/community/tutorials/how-to-install-the-apache-web-server-on-centos-8

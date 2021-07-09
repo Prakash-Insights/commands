@@ -1,5 +1,36 @@
 sudo nautilus  //USB HDD open with root permission
 
+hostname -I  // IP addredd
+uname -a  // Linux version details
+uname -r // Linux OS version
+
+// RHEL/CentOS/Fedora 
+cat /etc/redhat-release  // if Cent OS version
+dnf update -y  // Cent OS update
+dnf --version
+dnf search apache2
+systemctl status httpd  // RHEL/CentOS/Fedora 
+sudo systemctl stop httpd
+sudo systemctl start httpd
+sudo systemctl restart httpd
+sudo systemctl reload httpd 
+sudo systemctl disable httpd
+sudo systemctl enable httpd
+sudo yum install httpd // sudo yum update httpd
+vi /etc/httpd/conf.d/server-status.conf  
+// vi etc/apache2/conf.d/http2.conf
+yum install links
+apachectl status
+ps -eo comm,etime,user | grep httpd
+ps -eo comm,etime,user | grep root | grep httpd
+
+
+// alpine/busybox OS/image
+apk add = apt install = apt-get install
+apk add --update go=1.16.3
+apk update/upgrade = apt update/upgrade
+apk del = apt remove
+# apk add is working in alpine/busybox docker image
 
 --------------------  
 Github process
@@ -101,23 +132,7 @@ sudo mkdir /mnt/ntfs2
 sudo mount /dev/sda5 -t ntfs-3g -o permissions /mnt/ntfs2 
 sudo blkid 
 -------------partition------ 
- 
- 
--------- mondo db database dump and restore 
-mongodump --archive=db_mb_new  --uri=mongodb+srv://dbmb:password@cluster0.xxxxx.mongodb.net/db_name
 
-Same database copy to other database
-mongorestore --db db_ekart_dev --nsInclude 'new_db_name.*' --archive="db_mb_new" --uri=mongodb+srv://dbmb:password@cluster0.xxxxx.mongodb.net/db_name
-
-Name change and clone to new
-mongorestore --nsInclude 'old_db_name.*' --nsFrom='old_db_name.*' --nsTo='db_ekart_dev.*' --archive="db_mb_new" mongodb+srv://dbmb:password@cluster0.xxxxx.mongodb.net/db_name
-
-Connect database by CMD
-COPY old_db_name --> to new_db_name
-cmd -> mongo mongodb+srv://dbmb:password@cluster0.xxxxx.mongodb.net/db_name
-> show dbs
---------------------------------------
- 
 
 -------- 
 1) npx create-react-app my-app --template redux // understand only // redux-toolkit  

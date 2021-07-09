@@ -1,0 +1,14 @@
+ 
+-------- mondo db database dump and restore 
+mongodump --archive=db_mb_new  --uri=mongodb+srv://dbmb:password@cluster0.xxxxx.mongodb.net/db_name
+
+Same database copy to other database
+mongorestore --db db_ekart_dev --nsInclude 'new_db_name.*' --archive="db_mb_new" --uri=mongodb+srv://dbmb:password@cluster0.xxxxx.mongodb.net/db_name
+
+Name change and clone to new
+mongorestore --nsInclude 'old_db_name.*' --nsFrom='old_db_name.*' --nsTo='db_ekart_dev.*' --archive="db_mb_new" mongodb+srv://dbmb:password@cluster0.xxxxx.mongodb.net/db_name
+
+Connect database by CMD
+COPY old_db_name --> to new_db_name
+cmd -> mongo mongodb+srv://dbmb:password@cluster0.xxxxx.mongodb.net/db_name
+> show dbs

@@ -32,6 +32,10 @@ sudo apt install -y git
 sudo apt-get install nginx
 sudo systemctl start nginx
 sudo systemctl enable nginx
+# apache2
+
+
+
 # sudo systemctl status nginx
 sudo ufw app list
 sudo ufw allow 'nginx http'
