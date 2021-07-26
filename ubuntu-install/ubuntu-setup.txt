@@ -219,14 +219,23 @@ microk8s dashboard-proxy #chrome://flags/ --> localhost = enabled
 microk8s start
 microk8s stop
 
+---------------------Free Screen Recorder
+sudo wget -q -O - https://screenrec.com/download/pub.asc | sudo apt-key add -
+sudo add-apt-repository 'deb https://screenrec.com/download/ubuntu stable main'
+sudo apt update
+sudo apt install screenrec
+
 ---------------------
 
-
-
+---------------------
 
 ---------------------
 
+---------------------
 
+---------------------
+
+---------------------
 
 
 

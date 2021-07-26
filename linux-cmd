@@ -3,6 +3,7 @@ sudo nautilus  //USB HDD open with root permission
 hostname -I  // IP addredd
 uname -a  // Linux version details
 uname -r // Linux OS version
+uname -m // 32 or 64 bit OS
 
 // RHEL/CentOS/Fedora 
 cat /etc/redhat-release  // if Cent OS version
@@ -31,6 +32,10 @@ apk add --update go=1.16.3
 apk update/upgrade = apt update/upgrade
 apk del = apt remove
 # apk add is working in alpine/busybox docker image
+
+
+// Debian 
+systemctl list-unit-files  // list all services
 
 --------------------  
 Github process
@@ -110,6 +115,9 @@ sudo service apache2 stop
 export NODE_OPTIONS=--max-old-space-size=8192 
 
 --------------------  
+sudo passwd <username>
+
+--------------------  
 ng build --prod --aot 
 export NODE_ENV=production 
 set 
@@ -147,3 +155,24 @@ chmod 755 xampp-linux-*-installer.run
 Run the installer
 sudo ./xampp-linux-*-installer.run
 
+--------
+// Login with public key into AWS/VPS server
+sudo chmod 400 '/home/user/Downloads/my-one-time.pem'
+ssh -i '/home/user/Downloads/my-one-time.pem' ubuntu_user@11.22.333.140
+
+--------
+# Increase swap memory to file
+
+sudo swapon –show 
+sudo fallocate -l 1G /swapfile 
+if fallocate is not installed or you get an error message saying fallocate failed: Operation not supported then use the following command to create the swap file: 
+sudo dd if=/dev/zero of=/swapfile bs=1024 count=1048576 
+sudo chmod 600 /swapfile 
+sudo mkswap /swapfile 
+sudo swapon /swapfile 
+To make the change permanent open the /etc/fstab file: 
+sudo nano /etc/fstab 
+PATH: /etc/fstab 
+/swapfile swap swap defaults 0 0 
+sudo swapon –show 
+sudo free -h 
