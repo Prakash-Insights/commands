@@ -1,0 +1,12 @@
+// check all running port
+netstat -ano -p tcp 
+// check specific port number
+netstat -aon | findstr '[port_number]'
+
+//  Process/task
+tasklist /fi "imagename eq nginx.exe"
+
+// Check RAM 
+systeminfo | findstr /C:"Total Physical Memory"
+wmic MEMORYCHIP get BankLabel, DeviceLocator, Capacity, Speed
+
