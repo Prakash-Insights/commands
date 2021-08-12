@@ -10,3 +10,8 @@ tasklist /fi "imagename eq nginx.exe"
 systeminfo | findstr /C:"Total Physical Memory"
 wmic MEMORYCHIP get BankLabel, DeviceLocator, Capacity, Speed
 
+// List ENV variable (PS)
+Get-ChildItem Env:.
+// To set a variable 
+[Environment]::SetEnvironmentVariable("PATH", "C:\TestPath", "User")
+
