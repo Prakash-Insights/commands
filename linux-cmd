@@ -55,9 +55,8 @@ ssh-add ~/.ssh/id_ed25519
 // find .ssh folder in /home/user-name/.ssh   // hidden folder
 copy PUB file data and store it in github.com
 git clone with SSH not HTTPs
-
-
 ----------
+
 sudo lsof -i -P -n | grep LISTEN 
 sudo netstat -tulpn | grep LISTEN 
 sudo lsof -i:22 ## see a specific port such as 22 ## 
@@ -177,3 +176,19 @@ PATH: /etc/fstab
 /swapfile swap swap defaults 0 0 
 sudo swapon –show 
 sudo free -h 
+
+---------
+// See last restart/reboot log
+last reboot | less
+
+// See last mysql service log
+sudo less /var/log/mysql/error.log
+
+// CPU Usage and monitoring
+sar -P ALL 1 3  //Core CPU usage
+sar -u 1 3
+top -1
+ps -ef
+ps -eo uid,pid,tid,class,rtprio,ni,pri,psr,pcpu,comm
+mpstat -P ALL 3
+cat /proc/cpuinfo  // CPU information
