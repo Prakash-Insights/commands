@@ -15,3 +15,5 @@ Get-ChildItem Env:.
 // To set a variable 
 [Environment]::SetEnvironmentVariable("PATH", "C:\TestPath", "User")
 
+// NODE Heap Memory
+set NODE_OPTIONS=--max_old_space_size=4096

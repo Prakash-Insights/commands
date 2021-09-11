@@ -86,10 +86,10 @@ echo "mongo version------- $(mongo --version | grep 'shell version' )"
 echo "nginx version------- $(nginx -v)" 
 # Port Forwading in Virtual Box - NAT network > Port forward > Host - 8080 > Guest 80 > It will show nginx in host machine
 
-# mongodump --archive=db_ohc_new  --uri=mongodb+srv://ohc:ohc@clustername.1cqxju.mongodb.net/db_ohc 
-# mongorestore --archive="db_ohc_new" mongodb+srv://ohc:ohc@clustername.12l8kp.mongodb.net/db_ohc 
-# mongorestore --archive="db_ohc_new" mongodb://127.0.0.1:27017/?readPreference=primary&ssl=false 
-# mongorestore --archive="db_ohc_new" mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false  
+# mongodump --archive=db_oh_new  --uri=mongodb+srv://oh:oh@clustername.1cqxju.mongodb.net/db_oh
+# mongorestore --archive="db_oh_new" mongodb+srv://oh:oh@clustername.12l8kp.mongodb.net/db_oh
+# mongorestore --archive="db_oh_new" mongodb://127.0.0.1:27017/?readPreference=primary&ssl=false 
+# mongorestore --archive="db_oh_new" mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false  
 # show dbs
 # show databases
 # use ohc
