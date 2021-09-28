@@ -19,3 +19,23 @@ sudo systemctl status mongod
 sudo systemctl enable mongod
 #sudo systemctl stop mongod
 #sudo systemctl restart mongod
+
+
+db.createUser(
+  {
+    user: "abcadmin",
+    pwd: "St@yadasds",
+    roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]
+  }
+)
+db.createUser(
+  {
+    user: "azse",
+    pwd: "news123",
+    roles: [ { role: "readWrite", db: "db_oh" } ]
+  }
+)
+db.auth("abcadmin", "St@yadasds")
+
+//Mongo collection clone
+db.myoriginal.aggregate([ { $out: "mycopy" } ])
