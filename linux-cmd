@@ -70,6 +70,7 @@ sudo lsof -i:22 ## see a specific port such as 22 ##
 sudo nmap -sTU -O IP-address-Here 
 find . -type f -mtime 90  # last modified file in entire system
 find . -name "node_modules" -exec rm -rf '{}' +  # remove all node_modules from folders
+rm -r dir-name # remove directory
 ps -elf | grep -i *sh # all process with sh file
 ps -elf | grep -i unzip # all process with unzip file
 
