@@ -4,7 +4,7 @@
 db_host="localhost"
 db_name="DBBACKUP"
 db_username="busrname"
-db_password='qy$HEbn7Ebn7'
+db_password='qy$HEbn7'
 backup_location='/mnt/backup-bucket'
 today=`date +%Y-%m-%d`
 sql_file=$backup_location/$today/$db_name-`date "+%F-%H-%M-%S"`.sql

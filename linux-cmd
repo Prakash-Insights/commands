@@ -50,6 +50,11 @@ git config --list
 
 git reset --hard && git clean -fd && git pull 
 
+// If you have done some changes in dev branch, but not-push yet
+// you can force checkout to new branch with changes
+git checkout -b h-ctas
+git push --set-upstream origin h-ctas
+
 # Generate an SSH Key github/git
 # https://zellwk.com/blog/github-actions-deploy/
 cd ~/.ssh
@@ -132,6 +137,7 @@ sudo service apache2 restart
 export NODE_OPTIONS="--max-old-space-size=8192"
 export NODE_OPTIONS="--max-old-space-size=16384"
 env | grep NODE_OPTIONS
+node --max_old_space_size=4096 ./node_modules/@angular/cli/bin/ng build
 
 --------------------  
 sudo passwd <username>

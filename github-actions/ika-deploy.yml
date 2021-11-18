@@ -1,0 +1,33 @@
+name: dev-deploy
+on:
+  push:
+    branches:
+      - release
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        
+      - name: Deploy on Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.IKA_IP }}
+          username: ${{ secrets.IKA_USER }}
+          password: ${{ secrets.IKA_PASS }}
+          script: |
+            export NVM_DIR=~/.nvm
+            source ~/.nvm/nvm.sh
+            cd /var/www/html/angular/ika/
+            git checkout dev
+            git pull origin dev
+            cd /var/www/html/angular/ika/frontend/dist
+            rm -r ika
+            # npm install
+            # npm run build-prod
+            tar -xvzf ika.tar.gz -C . && rm -r ika.tar.gz
+            service nginx restart
+            cd /var/www/html/angular/ika/server
+            npm install
+            pm2 restart ika-api
