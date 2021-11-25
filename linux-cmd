@@ -12,6 +12,7 @@ dnf update -y  # Cent OS update
 dnf --version
 dnf search apache2
 systemctl status httpd  # RHEL/CentOS/Fedora 
+systemctl status mysqld # MySQL status
 sudo systemctl stop httpd
 sudo systemctl start httpd
 sudo systemctl restart httpd
@@ -222,6 +223,12 @@ ps -eo uid,pid,tid,class,rtprio,ni,pri,psr,pcpu,comm
 mpstat -P ALL 3
 cat /proc/cpuinfo  # CPU information
 lscpu -p
+ps -p 23997 -o %cpu,%mem,cmd  # CPU Usage
+ps -p 1716 -o %cpu,%mem,cmd # CPU Usage
+
+# See Cache and Size
+getconf -a | grep CACHE
+lscpu | grep "cache"
 
 ------------------------
 # FTP via command
