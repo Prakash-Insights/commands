@@ -1,19 +1,43 @@
-// check all running port
+#  check all running port
 netstat -ano -p tcp 
-// check specific port number
+#  check specific port number
 netstat -aon | findstr '[port_number]'
 
-//  Process/task
+#   Process/task
 tasklist /fi "imagename eq nginx.exe"
 
-// Check RAM 
+#  Check RAM 
 systeminfo | findstr /C:"Total Physical Memory"
 wmic MEMORYCHIP get BankLabel, DeviceLocator, Capacity, Speed
 
-// List ENV variable (PS)
+#  List ENV variable (PS)
 Get-ChildItem Env:.
-// To set a variable 
+#  To set a variable 
 [Environment]::SetEnvironmentVariable("PATH", "C:\TestPath", "User")
 
-// NODE Heap Memory
+#  NODE Heap Memory
 set NODE_OPTIONS=--max_old_space_size=4096
+
+# PowerShell command line execute policy disabled
+Get-ExecutionPolicy -List
+Help Get-ExecutionPolicy -Full
+Help Set-ExecutionPolicy -Full
+
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted 
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+Set-ExecutionPolicy -Scope "CurrentUser" -ExecutionPolicy "RemoteSigned"
+Set-ExecutionPolicy -Scope "CurrentUser" -ExecutionPolicy "Unrestricted"
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+Set-ExecutionPolicy Restricted -Scope CurrentUser
+
+
+Execution Policy Type:
+    Restricted - No Script either local, remote or downloaded can be executed on the system.
+    AllSigned - All script that are ran require to be digitally signed.
+    RemoteSigned - All remote scripts (UNC) or downloaded need to be signed.
+    Unrestricted - No signature for any type of script is required.
+
+Scope of new Change
+    LocalMachine - The execution policy affects all users of the computer.
+    CurrentUser - The execution policy affects only the current user.
+    Process - The execution policy affects only the current Windows PowerShell process.

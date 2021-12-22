@@ -60,6 +60,7 @@ git push --set-upstream origin h-ctas
 # https://zellwk.com/blog/github-actions-deploy/
 cd ~/.ssh
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+ls # check pub key name
 cat github-actions.pub >> authorized_keys
 
 # enter three times

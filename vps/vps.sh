@@ -10,7 +10,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 nvm list
-nvm install lts/fermium
+nvm install lts/fermium  # nvm install lts/gallium 
 nvm use lts/fermium
 # angular cli
 npm install -g @angular/cli
@@ -96,3 +96,24 @@ echo "nginx version------- $(nginx -v)"
 # db.dropDatabase()
 # show tables
 # show collections
+
+# EC2 new password
+sudo nano /etc/ssh/sshd_config
+# PasswordAuthentication yes
+sudo passwd ubuntu # provide new password
+
+# github ssh key add in github.com 
+ssh-keygen -t ed25519 -C "your_email@example.com"
+# Note: If you are using a legacy system that doesn't support the Ed25519 algorithm, use:
+# $ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+eval "$(ssh-agent -s)"   # Start the ssh-agent in the background.
+ssh-add ~/.ssh/id_ed25519
+cat ~/.ssh/id_ed25519.pub
+# Then select and copy the contents of the id_ed25519.pub file
+# displayed in the terminal to your clipboard
+# Click New SSH key or Add SSH key in github-settings
+ssh -T git@github.com # Attempts to ssh to GitHub
+ssh -vT git@github.com  # Attempts to ssh to GitHub
+ssh -T GITHUB-USERNAME@github.com # Permission denied (publickey).
+git remote add origin https://github.com/user/repo.git
+# chown -R ubuntu foldername
