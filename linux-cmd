@@ -5,6 +5,7 @@ uname -a  # Linux version details
 uname -r # Linux OS version
 uname -m # 32 or 64 bit OS
 lsb_release -a # Check ubuntu vresion 
+cat /etc/lsb-release # Check ubuntu vresion details
 
 # RHEL/CentOS/Fedora 
 cat /etc/redhat-release  # if Cent OS version
@@ -35,6 +36,12 @@ apk update/upgrade = apt update/upgrade
 apk del = apt remove
 # apk add is working in alpine/busybox docker image
 
+# see all the PPAs 
+ls /etc/apt/sources.list.d
+# Look for your desire PPA here and then remove the .list
+sudo rm -i /etc/apt/sources.list.d/PPA_Name.list
+# Remove PPA from list
+sudo add-apt-repository --remove ppa:PPA_Name/ppa
 
 # Debian 
 systemctl list-unit-files  # list all services
@@ -42,11 +49,13 @@ systemctl list-unit-files  # list all services
 --------------------  
 Github process
 git config --global credential.helper cache 
+# git config credential.helper store
 git config --global credential.https://github.com.username foo 
 git clone https://github.com/foo/repository.git 
 
 git config --global user.name "ABC"
 git config --global user.email "ABC"
+git config github.token "xxxxxxxxxxxxxxxxxxxxxxxx"
 git config --list
 
 git reset --hard && git clean -fd && git pull 
@@ -159,7 +168,7 @@ sudo fdisk -l | grep NTFS
 cd / 
 sudo mkdir /mnt/ntfs1 
 sudo mount -t ntfs /dev/sdb5 /mnt/ntfs1 
-df -hT 
+df -hT # HDD space/ drive space
   
 sudo apt update 
 sudo apt install fuse ntfs-3g 

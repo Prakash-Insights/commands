@@ -31,13 +31,18 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 Set-ExecutionPolicy Restricted -Scope CurrentUser
 
 
-Execution Policy Type:
-    Restricted - No Script either local, remote or downloaded can be executed on the system.
-    AllSigned - All script that are ran require to be digitally signed.
-    RemoteSigned - All remote scripts (UNC) or downloaded need to be signed.
-    Unrestricted - No signature for any type of script is required.
+# Execution Policy Type:
+#     Restricted - No Script either local, remote or downloaded can be executed on the system.
+#     AllSigned - All script that are ran require to be digitally signed.
+#     RemoteSigned - All remote scripts (UNC) or downloaded need to be signed.
+#     Unrestricted - No signature for any type of script is required.
 
-Scope of new Change
-    LocalMachine - The execution policy affects all users of the computer.
-    CurrentUser - The execution policy affects only the current user.
-    Process - The execution policy affects only the current Windows PowerShell process.
+# Scope of new Change
+#     LocalMachine - The execution policy affects all users of the computer.
+#     CurrentUser - The execution policy affects only the current user.
+#     Process - The execution policy affects only the current Windows PowerShell process.
+
+# -------------------------------------------------
+"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"  --disable-web-security --disable-gpu --user-data-dir=~/chromeTemp
+"C:\Program Files\Google\Chrome\Application\chrome.exe"  --disable-web-security --disable-gpu --user-data-dir="D:\chromeTemp"
+# -------------------------------------------------

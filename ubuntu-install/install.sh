@@ -1,5 +1,6 @@
 #!/bin/bash
 #sudo chmod +x install.sh
+lsb_release -a // check ubuntu version
 sudo apt -y update && sudo apt -y upgrade
 sudo apt install -y wget 
 sudo apt install -y curl
