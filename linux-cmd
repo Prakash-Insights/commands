@@ -139,6 +139,9 @@ pm2 start server.js --name "mb-warehouse"
 pm2 stop mb-cron
 pm2 restart mb-cron
 pm2 delete "mb-cron"
+pm2 startup systemd  # set as startup
+pm2 save # save for restart
+
 
 # next js for development
 pm2 start npm --name "next" -- run dev
@@ -157,6 +160,8 @@ pm2 start "ng serve --host 0.0.0.0 --port 8082"
 pm2 start "ng serve --host 0.0.0.0 --port 8082" --name "My Angular App"
 pm2 start "ng serve --host 0.0.0.0 --port 8082" --name "My Angular App" --watch /var/www/apps/my-angular-app
 
+# nest JS
+pm2 start dist/main.js --name "PMS-Api"
 
 nginx/apache---------------------------- 
 service nginx restart 
