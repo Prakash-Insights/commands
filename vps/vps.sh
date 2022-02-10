@@ -14,6 +14,13 @@ nvm install lts/fermium  # nvm install lts/gallium
 nvm use lts/fermium
 # angular cli
 npm install -g @angular/cli
+# yarn
+sudo apt remove yarn
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt-get update
+sudo apt-get install yarn -y
+# sudo apt install --no-install-recommends yarn # no install node
 # mongo
 echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
 wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -

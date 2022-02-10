@@ -116,6 +116,19 @@ sudo efibootmgr    # EFI Bootmanager status
 tar -zcvf archive-name.tar.gz directory-name   # zip dir 
 scp -r ./uploads  root@192.168.1.1:/var/www/html/angular/ohc/server/    #copy local file to VPS 
 
+#zip unzip
+sudo apt install zip unzip
+zip -r filename.zip folder
+zip -r filename.zip folder1 folder2
+zip -r filename.zip /path/to/folder1 /path/to/file2
+zip -r data.zip data/
+ls -l data.zip # Verify file with the ls command
+# You can encrypt data.zip with a password by passing the -e option:
+zip -r -e data.zip data/
+# We can also use and state password on the CLI to encrypt zipfile entries:
+zip -r -e -P 'YOUR_PASSWORD_HERE' output.zip /path/to/folder/
+
+
 ---------- 
 Pm2 start app.js 
 Pm2 list 
@@ -136,6 +149,14 @@ pm2 start npm --name "next" -- start
 #pm2 start npm --name "mb-frontend" -- start
 PORT=3003 NODE_PORT=3003 pm2 start npm --name "next" -- start
 pm2 restart all
+
+# angular with pm2
+pm2 start "ng serve"
+pm2 start "ng serve --host 0.0.0.0"
+pm2 start "ng serve --host 0.0.0.0 --port 8082"
+pm2 start "ng serve --host 0.0.0.0 --port 8082" --name "My Angular App"
+pm2 start "ng serve --host 0.0.0.0 --port 8082" --name "My Angular App" --watch /var/www/apps/my-angular-app
+
 
 nginx/apache---------------------------- 
 service nginx restart 
