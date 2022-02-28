@@ -12,14 +12,15 @@ sudo apt install -y apt-transport-https
 sudo apt update 
 sudo apt install -y code # or code-insiders  
 #node js
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+# curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 source ~/.bashrc
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 nvm list
 nvm install lts/fermium
-nvm use lts/fermium
+nvm use lts/fermium  # lts/gallium 
 #curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 #curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 #sudo apt-get update

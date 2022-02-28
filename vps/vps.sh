@@ -4,7 +4,8 @@ sudo apt -y update && sudo apt -y upgrade
 sudo apt install -y wget 
 sudo apt install -y curl
 # node js
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+# curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 source ~/.bashrc
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -126,3 +127,5 @@ ssh -vT git@github.com  # Attempts to ssh to GitHub
 ssh -T GITHUB-USERNAME@github.com # Permission denied (publickey).
 git remote add origin https://github.com/user/repo.git
 # chown -R ubuntu foldername
+
+# https://www.crazy-logic.co.uk/projects/computing/how-to-install-x11vnc-vnc-server-as-a-service-on-ubuntu-20-04-for-remote-access-or-screen-sharing

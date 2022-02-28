@@ -114,8 +114,15 @@ sudo efibootmgr    # EFI Bootmanager status
 
 ---------- 
 tar -zcvf archive-name.tar.gz directory-name   # zip dir 
-scp -r ./uploads  root@192.168.1.1:/var/www/html/angular/ohc/server/    #copy local file to VPS 
 
+scp -r ./uploads  root@192.168.1.1:/var/www/html/angular/ohc/server/    #copy local file to VPS 
+#copy a file from a local server to a remote server
+sudo scp -i my-pem-file.pem ./source/test.txt ec2-user@1.2.3.4:~/destination/
+#copy a file from a remote server to a local machine
+sudo scp -i my-pem-file.pem ec2-user@1.2.3.4:~/source/of/remote/test.txt ./where/to/put
+#So the basically syntax is:-
+scp -i my-pem-file.pem username@source:/location/to/file username@destination:/where/to/put
+---------- 
 #zip unzip
 sudo apt install zip unzip
 zip -r filename.zip folder
@@ -161,7 +168,7 @@ pm2 start "ng serve --host 0.0.0.0 --port 8082" --name "My Angular App"
 pm2 start "ng serve --host 0.0.0.0 --port 8082" --name "My Angular App" --watch /var/www/apps/my-angular-app
 
 # nest JS
-pm2 start dist/main.js --name "PMS-Api"
+pm2 start dist/main.js --name "pms-api"
 
 nginx/apache---------------------------- 
 service nginx restart 
@@ -194,8 +201,9 @@ sudo fdisk -l | grep NTFS
 cd / 
 sudo mkdir /mnt/ntfs1 
 sudo mount -t ntfs /dev/sdb5 /mnt/ntfs1 
-df -hT # HDD space/ drive space
-  
+df -hT # HDD size/ space/ drive space
+du -h  # Folder size and space
+
 sudo apt update 
 sudo apt install fuse ntfs-3g 
 sudo mkdir /mnt/ntfs2 
@@ -242,7 +250,6 @@ PATH: /etc/fstab
 /swapfile swap swap defaults 0 0 
 sudo swapon –show 
 sudo free -h 
-
 ---------
 # See last restart/reboot log
 last reboot | less
@@ -265,6 +272,12 @@ ps -p 1716 -o %cpu,%mem,cmd # CPU Usage
 # See Cache and Size
 getconf -a | grep CACHE
 lscpu | grep "cache"
+
+# RAM usage and monitoring
+sudo free -h 
+htop   # high memory test
+vmstat  # RAM memory status
+
 
 ------------------------
 # FTP via command

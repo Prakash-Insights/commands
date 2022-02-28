@@ -225,8 +225,45 @@ sudo add-apt-repository 'deb https://screenrec.com/download/ubuntu stable main'
 sudo apt update
 sudo apt install screenrec
 
----------------------
+--------------------- VNC 
+https://www.crazy-logic.co.uk/projects/computing/how-to-install-x11vnc-vnc-server-as-a-service-on-ubuntu-20-04-for-remote-access-or-screen-sharing
+#First of all lets do a
+sudo apt-get update
+#First thing we need to do is change the display manager over to lightdm (away from gnome display manager 3).
+sudo apt-get install lightdm
+#followed by a quick reboot
+sudo reboot
+#and then
+sudo apt-get install x11vnc
+sudo nano /lib/systemd/system/x11vnc.service
 
+#and copy paste in the following
+[Unit]
+Description=x11vnc service
+After=display-manager.service network.target syslog.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/x11vnc -forever -display :0 -auth guess -passwd password
+ExecStop=/usr/bin/killall x11vnc
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+#and copy paste END 
+
+#Super – now we need to tell the systemd system there is a change and to reload
+systemctl daemon-reload
+#followed by enabling the new service
+systemctl enable x11vnc.service
+#While we’re there we may aswell start the service then test it
+systemctl start x11vnc.service
+
+systemctl status x11vnc.service
+
+#One last test before calling it done is to reboot the system once again. It’s important to check that you can log in from the ‘login’ screen.
+#OH – A GOTYA – don’t lock the screen as you wont be able to VNC back in.
+#So change your settings>privacy>screen lock to the following.
 ---------------------
 
 ---------------------
