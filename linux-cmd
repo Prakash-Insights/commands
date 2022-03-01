@@ -55,7 +55,7 @@ git clone https://github.com/foo/repository.git
 
 git config --global user.name "ABC"
 git config --global user.email "ABC"
-git config github.token "xxxxxxxxxxxxxxxxxxxxxxxx"
+cd in git-folder: git config github.token "xxxxxxxxxxxxxxxxxxxxxxxx"
 git config --list
 
 git reset --hard && git clean -fd && git pull 

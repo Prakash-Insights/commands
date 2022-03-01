@@ -11,8 +11,12 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 nvm list
-nvm install lts/fermium  # nvm install lts/gallium 
+nvm ls-remote
+nvm install lts/fermium  #14.16
+# nvm install lts/gallium # LTS 16.14
 nvm use lts/fermium
+# export NODE_OPTIONS=--openssl-legacy-provider # Older applications support for down version also
+# unset NODE_OPTIONS
 # angular cli
 npm install -g @angular/cli
 # yarn
