@@ -225,7 +225,11 @@ sudo add-apt-repository 'deb https://screenrec.com/download/ubuntu stable main'
 sudo apt update
 sudo apt install screenrec
 
---------------------- VNC 
+--------------------- VNC
+Ubuntu 21
+https://blog.gordonbuchan.com/blog/index.php/2021/08/22/installing-x11vnc-to-replace-broken-screen-sharing-on-ubuntu-21-04/
+
+Ubuntu 20
 https://www.crazy-logic.co.uk/projects/computing/how-to-install-x11vnc-vnc-server-as-a-service-on-ubuntu-20-04-for-remote-access-or-screen-sharing
 #First of all lets do a
 sudo apt-get update

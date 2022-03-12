@@ -49,7 +49,7 @@ systemctl list-unit-files  # list all services
 --------------------  
 Github process
 git config --global credential.helper cache 
-# git config credential.helper store
+git config credential.helper store
 git config --global credential.https://github.com.username foo 
 git clone https://github.com/foo/repository.git 
 
