@@ -69,6 +69,8 @@ sudo apt update
 sudo apt install -y microsoft-edge-dev
 #vlc
 sudo apt-get install -y vlc
+#favorite-apps ubuntu-desktop
+gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'org.gnome.Nautilus.desktop', 'libreoffice-writer.desktop', 'google-chrome.desktop', 'code.desktop', 'mongodb-compass.desktop', 'notepadqq.desktop', 'skypeforlinux.desktop']"
 echo "git version------- $(git --version)" 
 echo "node version------- $(node -v)" 
 echo "npm version------- $(npm -v)"
