@@ -46,3 +46,13 @@ Set-ExecutionPolicy Restricted -Scope CurrentUser
 "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"  --disable-web-security --disable-gpu --user-data-dir=~/chromeTemp
 "C:\Program Files\Google\Chrome\Application\chrome.exe"  --disable-web-security --disable-gpu --user-data-dir="D:\chromeTemp"
 # -------------------------------------------------
+
+# Total Size of folder by command line 
+dir *.* /s
+# Free Tool : https://www.folder-size.com/
+
+# Move file to another folder
+move 97801* ../9780FOLD
+
+# AWS S3 cp
+# https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html

@@ -1,7 +1,8 @@
+# TESTED
 # Add-Type -AssemblyName System.IO.Compression.FileSystem;
 # Add-Type -AssemblyName System.Text.Encoding;
-$files= Get-ChildItem "D:\nielsen-images\2051-3227";  #601-1100, 1101-1300, 1301-1400 1401-2050
-$destinationFilePath="D:\nielsen-images\extract-images";
+$files= Get-ChildItem "D:\new-images\00000-00010";  #601-1100, 1101-1300, 1301-1400 1401-2050 2051-3227 3228-3300 3301-3378
+$destinationFilePath="D:\new-images\extract-images";
 # function Unzip
 # {
 #     param([string]$zipfile, [string]$outpath);
