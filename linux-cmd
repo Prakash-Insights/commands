@@ -212,6 +212,8 @@ sudo mkdir /mnt/ntfs1
 sudo mount -t ntfs /dev/sdb5 /mnt/ntfs1 
 df -hT # HDD size/ space/ drive space
 du -h  # Folder size and space
+lsblk  # hdd space and path
+du -sh* # All folder highest size and space
 
 sudo apt update 
 sudo apt install fuse ntfs-3g 

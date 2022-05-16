@@ -39,3 +39,4 @@ db.auth("abcadmin", "St@yadasds")
 
 //Mongo collection clone
 db.myoriginal.aggregate([ { $out: "mycopy" } ])
+

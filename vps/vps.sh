@@ -27,6 +27,12 @@ sudo apt-get update
 sudo apt-get install yarn -y
 # sudo apt install --no-install-recommends yarn # no install node
 # mongo
+# ubuntu server 22.0 LTS
+# echo "deb http://security.ubuntu.com/ubuntu impish-security main" | sudo tee /etc/apt/sources.list.d/impish-security.list
+# sudo apt-get update
+# sudo apt-get install libssl1.1
+
+# https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/
 echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
 wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
 sudo apt-get install -y gnupg
