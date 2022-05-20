@@ -25,6 +25,8 @@ nvm use lts/fermium  # lts/gallium
 #curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 #sudo apt-get update
 #sudo apt-get install nodejs
+# Node JS stake out of memory 
+export NODE_OPTIONS="--max-old-space-size=8192" # 4096 8192 16384
 # angular cli
 npm install -g @angular/cli
 #mongo

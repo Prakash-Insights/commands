@@ -17,6 +17,10 @@ nvm install lts/fermium  #14.16
 nvm use lts/fermium
 # export NODE_OPTIONS=--openssl-legacy-provider # Older applications support for down version also
 # unset NODE_OPTIONS
+
+# Node JS stake out of memory 
+export NODE_OPTIONS="--max-old-space-size=4096" # 4096 8192 16384
+
 # angular cli
 npm install -g @angular/cli
 # yarn
@@ -129,6 +133,8 @@ ssh-keygen -t ed25519 -C "your_email@example.com"
 eval "$(ssh-agent -s)"   # Start the ssh-agent in the background.
 ssh-add ~/.ssh/id_ed25519
 cat ~/.ssh/id_ed25519.pub
+
+sudo chown -R $(whoami):$(whoami) /var/www/html/YOUR_FOLDER
 # Then select and copy the contents of the id_ed25519.pub file
 # displayed in the terminal to your clipboard
 # Click New SSH key or Add SSH key in github-settings

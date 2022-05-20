@@ -205,6 +205,7 @@ printenv | less
 printenv | more 
  
 -------------partition------ 
+sudo parted --list
 sudo parted -l 
 sudo fdisk -l | grep NTFS 
 cd / 
@@ -244,10 +245,10 @@ sudo -i #root with pem key without passwd
 su - #root with passwd
 sudo chown -R $USER:$GROUP ~/.npm
 sudo chown -R $USER:$GROUP ~/.config
-
+sudo chown -R $(whoami):$(whoami) /var/www/html/YOUR_FOLDER
 --------
 # Increase swap memory to file
-
+# https://help.ubuntu.com/community/SwapFaq#How_much_swap_do_I_need.3F
 sudo swapon –show 
 sudo fallocate -l 1G /swapfile 
 if fallocate is not installed or you get an error message saying fallocate failed: Operation not supported then use the following command to create the swap file: 
