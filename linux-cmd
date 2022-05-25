@@ -6,6 +6,7 @@ uname -r # Linux OS version
 uname -m # 32 or 64 bit OS
 lsb_release -a # Check ubuntu vresion 
 cat /etc/lsb-release # Check ubuntu vresion details
+cat /etc/os-release   # Check ubuntu vresion details
 
 # RHEL/CentOS/Fedora 
 cat /etc/redhat-release  # if Cent OS version
