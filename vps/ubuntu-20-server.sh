@@ -25,6 +25,7 @@ sudo service ssh restart
 
 sudo apt update && sudo apt upgrade
 # sudo nano /etc/apt/sources.list
+# REPLACE:  http://archive.ubuntu.com/ubuntu 
 # Try sudo ping 8.8.8.8 inside your distro (Ubuntu).
 # If you can not reach network, search for network related issues in wsl.
 # If network is reachable it's either dns problem or host being blocked by your network.
