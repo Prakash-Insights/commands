@@ -1,4 +1,4 @@
-
+#!/bin/bash
 for file in $(ls /media/u21-test/Elements/done/*.zip)
 do
 mkdir unzip_dir
