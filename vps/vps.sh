@@ -134,6 +134,12 @@ eval "$(ssh-agent -s)"   # Start the ssh-agent in the background.
 ssh-add ~/.ssh/id_ed25519
 cat ~/.ssh/id_ed25519.pub
 
+# TESTED
+# ssh-keygen -t ed25519 -C "email@gmail.com"
+# eval "$(ssh-agent -s)"
+# ssh-add ~/.ssh/id_ed25519
+# cat ~/.ssh/id_ed25519.pub
+
 sudo chown -R $(whoami):$(whoami) /var/www/html/YOUR_FOLDER
 # Then select and copy the contents of the id_ed25519.pub file
 # displayed in the terminal to your clipboard

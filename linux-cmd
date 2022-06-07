@@ -124,6 +124,7 @@ sudo efibootmgr    # EFI Bootmanager status
 
 ---------- 
 tar -zcvf archive-name.tar.gz directory-name   # zip dir 
+tar -xvzf next-bkup-25-11-21.tar.gz -C .   # Extract tar.gz file # . = FOLDER_PATH
 
 scp -r ./uploads  root@192.168.1.1:/var/www/html/angular/ohc/server/    #copy local file to VPS 
 #copy a file from a local server to a remote server

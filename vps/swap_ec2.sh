@@ -1,8 +1,12 @@
 #SWAP memory update:
 #https://aws.amazon.com/premiumsupport/knowledge-center/ec2-memory-swap-file/
 
-#In this example dd command, the swap file is 4 GB (128 MB x 64):
-sudo dd if=/dev/zero of=/swapfile bs=128M count=256
+#In this example dd command, the swap file is 8 GB (128 MB x 64):
+# 4 GB=bs 128 x count 32
+# 8 GB=bs 128 x count 64
+# 16 GB=bs 128 x count 128
+# 32 GB=bs 128 x count 256
+sudo dd if=/dev/zero of=/swapfile bs=128M count=64
 
 #Update the read and write permissions for the swap file:
 sudo chmod 600 /swapfile
