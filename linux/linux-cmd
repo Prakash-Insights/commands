@@ -44,9 +44,6 @@ sudo rm -i /etc/apt/sources.list.d/PPA_Name.list
 # Remove PPA from list
 sudo add-apt-repository --remove ppa:PPA_Name/ppa
 
-# Debian 
-systemctl list-unit-files  # list all services
-
 --------------------  
 Github process
 git config --global credential.helper cache 
@@ -89,16 +86,6 @@ eval "$(ssh-agent -s)"
 # copy PUB file data and store it in github.com
 # git clone with SSH not HTTPs
 ----------
-
-sudo lsof -i -P -n | grep LISTEN 
-sudo netstat -tulpn | grep LISTEN 
-sudo lsof -i:22 ## see a specific port such as 22 ## 
-sudo nmap -sTU -O IP-address-Here 
-find . -type f -mtime 90  # last modified file in entire system
-find . -name "node_modules" -exec rm -rf '{}' +  # remove all node_modules from folders
-rm -r dir-name # remove directory
-ps -elf | grep -i *sh # all process with sh file
-ps -elf | grep -i unzip # all process with unzip file
 
 ---------- 
 timedatectl set-local-rtc 1 --adjust-system-clock  #set time in dual boot 
@@ -206,26 +193,6 @@ printenv
 printenv | less 
 printenv | more 
  
--------------partition------ 
-sudo parted --list
-sudo parted -l 
-sudo fdisk -l | grep NTFS 
-cd / 
-sudo mkdir /mnt/ntfs1 
-sudo mount -t ntfs /dev/sdb5 /mnt/ntfs1 
-df -hT # HDD size/ space/ drive space
-du -h  # Folder size and space
-lsblk  # hdd space and path
-du -sh* # All folder highest size and space
-
-sudo apt update 
-sudo apt install fuse ntfs-3g 
-sudo mkdir /mnt/ntfs2 
-sudo mount /dev/sda5 -t ntfs-3g -o permissions /mnt/ntfs2 
-sudo blkid 
--------------partition------ 
-
-
 -------- 
 1) npx create-react-app my-app --template redux # understand only # redux-toolkit  
 2) npx create-react-app my-app and implement shopping cart into this 
@@ -265,33 +232,6 @@ PATH: /etc/fstab
 sudo swapon –show 
 sudo free -h 
 ---------
-# See last restart/reboot log
-last reboot | less
-
-# See last mysql service log
-sudo less /var/log/mysql/error.log
-
-# CPU Usage and monitoring
-sar -P ALL 1 3  #Core CPU usage
-sar -u 1 3
-top -1
-ps -ef
-ps -eo uid,pid,tid,class,rtprio,ni,pri,psr,pcpu,comm
-mpstat -P ALL 3
-cat /proc/cpuinfo  # CPU information
-lscpu -p
-ps -p 23997 -o %cpu,%mem,cmd  # CPU Usage
-ps -p 1716 -o %cpu,%mem,cmd # CPU Usage
-
-# See Cache and Size
-getconf -a | grep CACHE
-lscpu | grep "cache"
-
-# RAM usage and monitoring
-sudo free -h 
-htop   # high memory test
-vmstat  # RAM memory status
-
 
 ------------------------
 # FTP via command
