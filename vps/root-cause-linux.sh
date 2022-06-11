@@ -81,3 +81,9 @@ lscpu | grep "cache"
 sudo free -h 
 htop   # high memory test
 vmstat  # RAM memory status
+
+# Inbound connection in linux server with PORT and IP address
+netstat -ant | grep :27017 | awk '{print $6}' | sort | uniq -c | sort -n
+ss -tn src :27017 | grep -i "estab" | wc -l
+ss -tn src :27017
+ss -tn src :27017 | awk '{print $5}'
