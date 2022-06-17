@@ -1,5 +1,5 @@
 #!/bin/bash
-ftp -n covers.gars.com << EOF
+ftp -n covers.com << EOF
 quote USER ZIFTPaa
 quote PASS 1w999nr7aa
 cd /Books/Update/
