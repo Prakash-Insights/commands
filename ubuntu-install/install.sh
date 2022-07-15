@@ -19,8 +19,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 nvm list
-nvm install lts/fermium
-nvm use lts/fermium  # lts/gallium 
+nvm install lts/gallium 
+nvm use lts/gallium #lts/fermium
 #curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 #curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 #sudo apt-get update
@@ -72,6 +72,11 @@ sudo apt update
 sudo apt install -y microsoft-edge-dev
 #vlc
 sudo apt-get install -y vlc
+#ssh
+sudo apt install openssh-server -y
+sudo service ssh start
+#ufw
+sudo ufw app list
 #favorite-apps ubuntu-desktop
 gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'org.gnome.Nautilus.desktop', 'libreoffice-writer.desktop', 'google-chrome.desktop', 'code.desktop', 'mongodb-compass.desktop', 'notepadqq.desktop', 'skypeforlinux.desktop']"
 echo "git version------- $(git --version)" 
@@ -82,3 +87,4 @@ echo "mongo version------- $(mongo --version | grep 'shell version' )"
 echo "google-chrome version------- $(google-chrome --version)"
 echo "code version------- $(code --version)"
 echo "notepadqq version------- $(notepadqq --version)"
+echo "ssh version------- $(sudo service ssh --version)"
