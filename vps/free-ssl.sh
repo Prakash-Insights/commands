@@ -30,3 +30,8 @@ cat /etc/nginx/sites-available/default
 # Here we add a cron job to an existing crontab file to do this.
 crontab -e
 0 12 * * * /usr/bin/certbot renew --quiet
+
+
+# Delete SSL
+sudo certbot delete --cert-name DOMAIN-NAME
+

@@ -56,3 +56,8 @@ move 97801* ../9780FOLD
 
 # AWS S3 cp
 # https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html
+
+
+# Domain tracing FIREWALL
+tracert DOMAIN_NAME
+nslookup DOMAIN_NAME
