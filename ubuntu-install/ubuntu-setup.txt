@@ -265,13 +265,13 @@ WantedBy=multi-user.target
 #and copy paste END 
 
 #Super – now we need to tell the systemd system there is a change and to reload
-systemctl daemon-reload
+sudo systemctl daemon-reload
 #followed by enabling the new service
 systemctl enable x11vnc.service
 #While we’re there we may aswell start the service then test it
-systemctl start x11vnc.service
+sudo systemctl start x11vnc.service
 
-systemctl status x11vnc.service
+sudo systemctl status x11vnc.service
 
 #One last test before calling it done is to reboot the system once again. It’s important to check that you can log in from the ‘login’ screen.
 #OH – A GOTYA – don’t lock the screen as you wont be able to VNC back in.

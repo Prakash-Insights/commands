@@ -1,11 +1,13 @@
 # Debian 
 systemctl list-unit-files  # list all services
 
----------
+#---------  PORT Listen
 sudo lsof -i -P -n | grep LISTEN 
 sudo netstat -tulpn | grep LISTEN 
 sudo lsof -i:22 ## see a specific port such as 22 ## 
 sudo nmap -sTU -O IP-address-Here 
+
+#--------- 
 find . -type f -mtime 90  # last modified file in entire system
 find . -name "node_modules" -exec rm -rf '{}' +  # remove all node_modules from folders
 rm -r dir-name # remove directory
@@ -21,6 +23,9 @@ find -type f -exec du -Sh {} + | sort -rh | head -n 5
 # find the largest files in a particular location, just include the path beside the find command:
 find /home/ -type f -exec du -Sh {} + | sort -rh | head -n 5
 find /home/ -type f -printf "%s %p\n" | sort -rn | head -n 20
+ps -ax | grep firefox # process with firefox app
+kill process-id   # kill process by id
+
 ---------
 
 # Print file and show number of lines
@@ -35,6 +40,7 @@ ducks
 # Finding largest file recursively on Linux bash shell using find
 sudo find / -type f -printf "%s\t%p\n" | sort -n | tail -1
 find $HOME -type f -printf '%s %p\n' | sort -nr | head -10
+find -type f -exec du -Sh {} + | sort -rh | head -n 5
 
 #-------------partition------ 
 sudo parted --list
@@ -87,3 +93,15 @@ netstat -ant | grep :27017 | awk '{print $6}' | sort | uniq -c | sort -n
 ss -tn src :27017 | grep -i "estab" | wc -l
 ss -tn src :27017
 ss -tn src :27017 | awk '{print $5}'
+
+
+# Log last days linux terminal
+journalctl --since "2 days ago"  
+journalctl --since "today"
+journalctl --since "yesterday --until "today" 
+journalctl --since "2022-07-21 06:00" --until "2022-07-21 08:00"
+journalctl -b # last boot 
+journalctl -k # kernel messages
+journalctl -p er # by priority (emerg|alert|crit|err|warning|info|debug)
+journalctl -u sshd # by unit 
+journalctl _UID=1000 # by user id

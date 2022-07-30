@@ -60,5 +60,9 @@ processManagement:
 security:
   authorization: "enabled"
 
+# mongodb restart
 sudo systemctl restart mongod
 sudo systemctl status mongod
+
+#MongoDB logs
+tail -1000 /var/log/mongodb/mongod.log  # 1000 lines

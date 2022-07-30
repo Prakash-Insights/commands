@@ -43,9 +43,9 @@ sudo systemctl daemon-reload
 sudo systemctl enable mongod
 #mongo-compass
 wget https://downloads.mongodb.com/compass/mongodb-compass_1.24.6_amd64.deb 
-sudo dpkg -i mongodb-compass_1.24.6_amd64.deb
+sudo dpkg -i mongodb-compass_1.24.6_amd64.deb -y
 #git
-sudo apt --fix-broken install
+sudo apt --fix-broken install -y
 sudo apt install -y git
 #skype
 wget https://go.skype.com/skypeforlinux-64.deb 

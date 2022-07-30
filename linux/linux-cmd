@@ -168,6 +168,12 @@ pm2 start "ng serve --host 0.0.0.0 --port 8082" --name "My Angular App" --watch 
 # nest JS
 pm2 start dist/main.js --name "pms-api"
 
+#pm2 startup autostart startup boot-time
+pm2 startup
+#[PM2] You have to run this command as root. Execute the following command:
+#sudo su -c "env PATH=$PATH:/home/unitech/.nvm/versions/node/v14.3/bin pm2 startup <distribution> -u <user> --hp <home-path>
+pm2 save
+
 nginx/apache---------------------------- 
 service nginx restart 
 service nginx start 
