@@ -18,6 +18,7 @@ source ~/.bashrc
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#nvm ls-remote 
 nvm list
 nvm install lts/gallium 
 nvm use lts/gallium #lts/fermium
@@ -43,7 +44,7 @@ sudo systemctl daemon-reload
 sudo systemctl enable mongod
 #mongo-compass
 wget https://downloads.mongodb.com/compass/mongodb-compass_1.24.6_amd64.deb 
-sudo dpkg -i mongodb-compass_1.24.6_amd64.deb -y
+sudo dpkg -i mongodb-compass_1.24.6_amd64.deb
 #git
 sudo apt --fix-broken install -y
 sudo apt install -y git

@@ -105,3 +105,10 @@ journalctl -k # kernel messages
 journalctl -p er # by priority (emerg|alert|crit|err|warning|info|debug)
 journalctl -u sshd # by unit 
 journalctl _UID=1000 # by user id
+
+
+# IP testing
+systemd-resolve --status | grep Current
+ip a
+ip r
+ip addr show
