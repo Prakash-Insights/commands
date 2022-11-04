@@ -25,3 +25,29 @@ sudo nano /etc/fstab
 
 #Add the following new line at the end of the file, save the file, and then exit:
 /swapfile swap swap defaults 0 0
+
+
+
+
+
+# TESTED on LAP DELL Server Ubuntu 22.04
+sudo swapon --show
+free -h
+df -h
+sudo fallocate -l 1G /swapfile1  #1G 2G
+ls -lh /swapfile1
+sudo chmod 600 /swapfile1
+ls -lh /swapfile1
+sudo mkswap /swapfile1
+sudo swapon /swapfile1
+sudo swapon --show
+free -h
+# Make Swap file permanent
+sudo cp /etc/fstab /etc/fstab.bak
+echo '/swapfile1 none swap sw 0 0' | sudo tee -a /etc/fstab
+# Tune Swap space settings
+cat /proc/sys/vm/swappiness # 60 to 20
+sudo sysctl vm.swappiness=20
+cat /proc/sys/vm/vfs_cache_pressure  # 100 to 40
+sudo nano /etc/sysctl.conf  # add vm.vfs_cache_pressure=40 vm.swappiness=20
+# TESTED on LAP DELL Server

@@ -264,3 +264,6 @@ sudo openssl req -new -newkey rsa:2048 -nodes -keyout website.nl.key -out websit
 # Email Address []:abc@myb.nl
 
 
+# ZIP without node_modules and others
+zip -r ctas-deploy-server-all.zip . -x */node_modules/**\*
+sudo zip -r ctas-deploy-server-all.zip . -x */node_modules/**\* */.next/**\* */.git/**\* */build/**\* */dist/**\* */.angular/**\* 

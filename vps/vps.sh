@@ -22,6 +22,9 @@ nvm use lts/fermium
 export NODE_OPTIONS="--max-old-space-size=4096" # 4096 8192 16384
 
 # angular cli
+####### sh: 1: node: Permission denied
+# npm config set user 0
+# npm config set unsafe-perm true
 npm install -g @angular/cli
 # yarn
 sudo apt remove yarn
