@@ -1,7 +1,7 @@
 # TESTED OK
 # Backup and upload into s3
 today=`date +%Y-%m-%d`
-db_name="ws_myboeken_$today"
+db_name="ws_myb_$today"
 now=$(date +"%T")
 mkdir /root/db_backup/aws-s3
 mongodump  --archive="/root/db_backup/aws-s3/$db_name" --host="localhost" --port=27017 --db DB_NM --username=USERNM --authenticationDatabase=admin --password=PASSWORD

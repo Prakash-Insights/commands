@@ -30,6 +30,7 @@ nvm use lts/gallium #lts/fermium
 export NODE_OPTIONS="--max-old-space-size=8192" # 4096 8192 16384
 # angular cli
 ####### sh: 1: node: Permission denied
+# npm config ls -l
 # npm config set user 0
 # npm config set unsafe-perm true
 npm install -g @angular/cli

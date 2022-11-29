@@ -112,6 +112,8 @@ sudo efibootmgr    # EFI Bootmanager status
 ---------- 
 tar -zcvf archive-name.tar.gz directory-name   # zip dir 
 tar -xvzf next-bkup-25-11-21.tar.gz -C .   # Extract tar.gz file # . = FOLDER_PATH
+tar -zcf WS-SMALL-MP.tar.gz .  # Remove v for verbose (OUTPUT Files Name)
+
 
 scp -r ./uploads  root@192.168.1.1:/var/www/html/angular/ohc/server/    #copy local file to VPS 
 #copy a file from a local server to a remote server
@@ -267,3 +269,9 @@ sudo openssl req -new -newkey rsa:2048 -nodes -keyout website.nl.key -out websit
 # ZIP without node_modules and others
 zip -r ctas-deploy-server-all.zip . -x */node_modules/**\*
 sudo zip -r ctas-deploy-server-all.zip . -x */node_modules/**\* */.next/**\* */.git/**\* */build/**\* */dist/**\* */.angular/**\* 
+sudo zip -r -x */node_modules/**\* */.next/**\* */build/**\* */dist/**\* */.angular/**\* */amazon_logs/**\* */bol_logs/**\*  WR-SMALL-MP.zip .
+# sudo zip -r WR-SMALL-MP.zip . -x */node_modules/**\* -x */.next/**\* -x */build/**\* -x */dist/**\* -x */.angular/**\* -x */amazon_logs/**\* -x */bol_logs/**\*  
+
+# Working / Tested WS-Server
+sudo zip -r WS-SMALL-MP.zip . -x "*node_modules*" -x "*.next/*" -x "*/build/**\*" -x "*/dist/**\*" -x "*/.angular/**\*" -x "*amazon_logs*" -x "*bol_logs*"  
+sudo zip -r WS-SMALL-WR.zip . -x "*node_modules*" -x "*.next/*" -x "*/build/**\*" -x "*/dist/**\*" -x "*/.angular/**\*" -x "*amazon_logs*" -x "*bol_logs*" 

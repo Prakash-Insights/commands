@@ -23,6 +23,7 @@ export NODE_OPTIONS="--max-old-space-size=4096" # 4096 8192 16384
 
 # angular cli
 ####### sh: 1: node: Permission denied
+# npm config ls -l
 # npm config set user 0
 # npm config set unsafe-perm true
 npm install -g @angular/cli
@@ -57,6 +58,7 @@ sudo apt install -y git
 sudo apt-get install nginx
 sudo systemctl start nginx
 sudo systemctl enable nginx
+# /etc/nginx
 # apache2 -------------
 sudo apt update
 sudo apt install apache2

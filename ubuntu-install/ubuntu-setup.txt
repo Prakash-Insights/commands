@@ -28,6 +28,7 @@ nvm use v14.16.0
 ####### sh: 1: node: Permission denied
 # npm config set user 0
 # npm config set unsafe-perm true
+# npm config ls -l
 npm install -g @angular/cli 
 
 
