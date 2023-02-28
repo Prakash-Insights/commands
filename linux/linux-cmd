@@ -275,3 +275,7 @@ sudo zip -r -x */node_modules/**\* */.next/**\* */build/**\* */dist/**\* */.angu
 # Working / Tested WS-Server
 sudo zip -r WS-SMALL-MP.zip . -x "*node_modules*" -x "*.next/*" -x "*/build/**\*" -x "*/dist/**\*" -x "*/.angular/**\*" -x "*amazon_logs*" -x "*bol_logs*"  
 sudo zip -r WS-SMALL-WR.zip . -x "*node_modules*" -x "*.next/*" -x "*/build/**\*" -x "*/dist/**\*" -x "*/.angular/**\*" -x "*amazon_logs*" -x "*bol_logs*" 
+
+# Remove repository 
+sudo add-apt-repository --remove ppa:PPA_REPOSITORY_NAME/PPA
+sudo add-apt-repository --remove ppa:videolan/master-daily
