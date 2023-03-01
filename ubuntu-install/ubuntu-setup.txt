@@ -193,6 +193,10 @@ sudo apt-get update
 sudo apt-get install -y dotnet-sdk-5.0
 sudo apt-get install -y aspnetcore-runtime-5.0
 sudo apt-get install -y dotnet-runtime-5.0
+#SDK 6
+sudo apt-get install -y dotnet-sdk-6.0
+sudo apt-get install -y aspnetcore-runtime-6.0
+sudo apt-get install -y dotnet-runtime-6.0
 
 --------------------- ZOOM
 wget https://zoom.us/client/latest/zoom_amd64.deb
