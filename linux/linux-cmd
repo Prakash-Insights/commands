@@ -283,3 +283,6 @@ ps -e | grep snap-store #id blocking process
 kill #id
 sudo snap refresh
 
+# Remove repository 
+sudo add-apt-repository --remove ppa:PPA_REPOSITORY_NAME/PPA
+sudo add-apt-repository --remove ppa:videolan/master-daily
