@@ -20,7 +20,8 @@ sudo systemctl enable mongod
 #sudo systemctl stop mongod
 #sudo systemctl restart mongod
 
-
+mongosh #mongo
+use admin 
 db.createUser(
   {
     user: "abcadmin",
@@ -40,3 +41,26 @@ db.auth("abcadmin", "St@yadasds")
 //Mongo collection clone
 db.myoriginal.aggregate([ { $out: "mycopy" } ])
 
+
+
+sudo nano /etc/mongod.conf
+storage:
+  dbPath: /var/lib/mongodb
+  journal:
+    enabled: true
+# where to write logging data.
+systemLog:
+  destination: file
+  logAppend: true
+  path: /var/log/mongodb/mongod.log
+# network interfaces
+net:
+  port: 27017
+  bindIp: 127.0.0.1,6.2.6.1 #MONGO_PRIVATE_PC_IP
+# how the process runs
+processManagement:
+  timeZoneInfo: /usr/share/zoneinfo
+security:
+  authorization: "enabled"
+
+sudo systemctl restart mongod

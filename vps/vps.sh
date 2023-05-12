@@ -49,6 +49,15 @@ sudo apt-get -y update
 sudo apt-get install -y mongodb-org
 sudo systemctl start mongod
 sudo systemctl daemon-reload
+
+# To prevent unintended upgrades, you can pin the package at the currently installed version:
+echo "mongodb-org hold" | sudo dpkg --set-selections
+echo "mongodb-org-database hold" | sudo dpkg --set-selections
+echo "mongodb-org-server hold" | sudo dpkg --set-selections
+echo "mongodb-mongosh hold" | sudo dpkg --set-selections
+echo "mongodb-org-mongos hold" | sudo dpkg --set-selections
+echo "mongodb-org-tools hold" | sudo dpkg --set-selections
+
 # sudo systemctl status mongod
 sudo systemctl enable mongod
 # git
@@ -58,6 +67,7 @@ sudo apt install -y git
 sudo apt-get install nginx
 sudo systemctl start nginx
 sudo systemctl enable nginx
+sudo systemctl status nginx
 # /etc/nginx
 # apache2 -------------
 sudo apt update
