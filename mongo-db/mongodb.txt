@@ -56,7 +56,7 @@ systemLog:
 # network interfaces
 net:
   port: 27017
-  bindIp: 127.0.0.1,6.2.6.1 #MONGO_PRIVATE_PC_IP
+  bindIp: 127.0.0.1,6.2.6.1 #MONGO_PRIVATE_PC_IP (for EC2, not elastic ip, it is internal network IP)
 # how the process runs
 processManagement:
   timeZoneInfo: /usr/share/zoneinfo
