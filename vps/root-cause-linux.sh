@@ -112,3 +112,9 @@ systemd-resolve --status | grep Current
 ip a
 ip r
 ip addr show
+
+#PM2
+pm2 startup                   # Detect init system, generate and configure pm2 boot on startup
+pm2 save                      # Save current process list
+pm2 resurrect                 # Restore previously saved processes
+pm2 unstartup                 # Disable and remove startup system
