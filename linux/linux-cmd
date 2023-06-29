@@ -137,9 +137,9 @@ zip -r -e -P 'YOUR_PASSWORD_HERE' output.zip /path/to/folder/
 
 
 ---------- 
-Pm2 start app.js 
-Pm2 list 
-Pm2 stop app.js/app 
+pm2 start app.js 
+pm2 list 
+pm2 stop app.js/app 
 pm2 start server.js --name "mb-cron" --watch
 pm2 start server.js --name "mb-cron"
 pm2 start server.js --name "mb-warehouse"
@@ -149,6 +149,11 @@ pm2 delete "mb-cron"
 pm2 startup systemd  # set as startup
 pm2 save # save for restart
 
+#PM2
+pm2 startup                   # Detect init system, generate and configure pm2 boot on startup
+pm2 save                      # Save current process list
+pm2 resurrect                 # Restore previously saved processes
+pm2 unstartup                 # Disable and remove startup system
 
 # next js for development
 pm2 start npm --name "next" -- run dev
