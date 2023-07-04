@@ -7,6 +7,12 @@ sudo netstat -tulpn | grep LISTEN
 sudo lsof -i:22 ## see a specific port such as 22 ## 
 sudo nmap -sTU -O IP-address-Here 
 
+# List all services 
+less /etc/services
+sudo ss -tulwn | grep LISTEN
+sudo ss -tulwn
+sudo ss -tulw
+
 #--------- 
 find . -type f -mtime 90  # last modified file in entire system
 find . -name "node_modules" -exec rm -rf '{}' +  # remove all node_modules from folders
