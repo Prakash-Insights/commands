@@ -14,7 +14,10 @@ sudo ss -tulwn
 sudo ss -tulw
 
 #--------- 
-find . -type f -mtime 90  # last modified file in entire system
+find . -type f -mtime 90  # last modified file in entire system (90days)
+find . -type f -mtime -5 # last modified file in entire system (up to 5 days)
+find . -type f -mtime +5 # last modified file in entire system (5 days plus)
+
 find . -name "node_modules" -exec rm -rf '{}' +  # remove all node_modules from folders
 rm -r dir-name # remove directory
 ps -elf | grep -i *sh # all process with sh file
