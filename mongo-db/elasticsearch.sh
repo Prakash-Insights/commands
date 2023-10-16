@@ -9,7 +9,7 @@ sudo apt install elasticsearch
 
 # Step 2 — Configuring Elasticsearch
 sudo nano /etc/elasticsearch/elasticsearch.yml
-# ---------------------------------- Network -----------------------------------
+# ---------------------------------- Network 
 #
 # Set the bind address to a specific IP (IPv4 or IPv6):
 #
@@ -24,7 +24,7 @@ sudo ufw allow from 198.51.100.0 to any port 9200
 sudo ufw enable
 sudo ufw status
 
-# ---------------------------------- External Network -----------------------------------
+# ---------------------------------- External Network 
 # but external connections don’t work.
 # So first add your IP address to the firewall
 # sudo ufw allow from xxx.yyy.aaa.bbb to any port 9200
@@ -34,6 +34,12 @@ sudo ufw status
 discovery.type: single-node
 #then restart 
 systemctl restart elasticsearch
+
+# ---------------------------------- Security
+# You can set a password for native and built-in users using these commands: 
+bin/elasticsearch-reset-password -u user1
+bin/elasticsearch-reset-password -u user1 -i <password>
+POST /_security/user/user1/_password { "password" : "new-test-password" }
 
 # Step 4 — Testing Elasticsearch
 curl -X GET 'http://localhost:9200'
