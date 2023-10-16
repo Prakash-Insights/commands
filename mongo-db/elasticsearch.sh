@@ -18,6 +18,7 @@ network.host: localhost
 
 sudo systemctl start elasticsearch
 sudo systemctl enable elasticsearch
+sudo systemctl status elasticsearch
 
 # Step 3 — Securing Elasticsearch
 sudo ufw allow from 198.51.100.0 to any port 9200
