@@ -24,6 +24,17 @@ sudo ufw allow from 198.51.100.0 to any port 9200
 sudo ufw enable
 sudo ufw status
 
+# ---------------------------------- External Network -----------------------------------
+# but external connections don’t work.
+# So first add your IP address to the firewall
+# sudo ufw allow from xxx.yyy.aaa.bbb to any port 9200
+# then edit the elasticsearch.yml configuration file. Change network.host: localhost to network.host: 0.0.0.0
+# If you restart the service with systemctl restart elasticsearch you’ll get an error.
+# You need to add this at the bottom of the .yml file:
+discovery.type: single-node
+#then restart 
+systemctl restart elasticsearch
+
 # Step 4 — Testing Elasticsearch
 curl -X GET 'http://localhost:9200'
 #Output
