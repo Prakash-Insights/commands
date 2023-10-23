@@ -12,6 +12,7 @@ less /etc/services
 sudo ss -tulwn | grep LISTEN
 sudo ss -tulwn
 sudo ss -tulw
+systemctl --type=service --state=running
 
 #--------- 
 find . -type f -mtime 90  # last modified file in entire system (90days)
