@@ -50,6 +50,7 @@ git config --global credential.helper cache
 git config credential.helper store
 git config --global credential.https://github.com.username foo 
 git clone https://github.com/foo/repository.git 
+sudo chown -R $(whoami):$(whoami)  /var/www/html/FOLDERNAME     // IF not permission
 
 git config --global user.name "ABC"
 git config --global user.email "ABC"
