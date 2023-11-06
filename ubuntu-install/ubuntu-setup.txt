@@ -249,7 +249,7 @@ Ubuntu 20
 https://www.crazy-logic.co.uk/projects/computing/how-to-install-x11vnc-vnc-server-as-a-service-on-ubuntu-20-04-for-remote-access-or-screen-sharing
 #First of all lets do a
 sudo apt-get update
-#First thing we need to do is change the display manager over to lightdm (away from gnome display manager 3).
+#First thing we need to do is change the display manager over to lightdm (Select lightdm ONLY).
 sudo apt-get install lightdm
 #followed by a quick reboot
 sudo reboot
