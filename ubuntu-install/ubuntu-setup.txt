@@ -76,6 +76,16 @@ git config --global user.name "abc"
 git config --global user.email web@linuxconfig.org 
 git config –list 
 
+# kex_exchange_identification: read: Operation timed out
+#URL: https://docs.github.com/en/authentication/troubleshooting-ssh/using-ssh-over-the-https-port
+#To set this in your SSH configuration file, edit the file at ~/.ssh/config, and add this section:
+Host github.com
+    Hostname ssh.github.com
+    Port 443
+    User git
+ssh -T git@github.com
+# Hi USERNAME! You've successfully authenticated, but GitHub does not provide shell access.
+
 ---------------------Skype 
 wget https://go.skype.com/skypeforlinux-64.deb 
 sudo apt install ./skypeforlinux-64.deb 
