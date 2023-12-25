@@ -1,0 +1,14 @@
+Duplicating a github repo with history
+It's so easy to duplicate a github repository including every commits and branches.
+1) Create a new repo in github using UI/command as usual. This will be the target repo where duplicate of source repo to be pasted.
+2) Open a command prompt and Clone the source/existing repo using the command:
+
+git clone --bare https://sourceRepoURL
+
+A new folder will be created containing some files from source repo.
+3) Move to that folder:
+cd sourceRepoFolder
+
+4) Push these files into the target repo using command:
+git push --mirror https://targetRepoURL
+
