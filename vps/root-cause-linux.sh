@@ -116,6 +116,8 @@ journalctl -p er # by priority (emerg|alert|crit|err|warning|info|debug)
 journalctl -u sshd # by unit 
 journalctl _UID=1000 # by user id
 
+# List 
+ls . | wc -l  # Total files in folder
 
 # IP testing
 systemd-resolve --status | grep Current
