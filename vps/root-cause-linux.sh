@@ -130,3 +130,7 @@ pm2 startup                   # Detect init system, generate and configure pm2 b
 pm2 save                      # Save current process list
 pm2 resurrect                 # Restore previously saved processes
 pm2 unstartup                 # Disable and remove startup system
+
+#MongoDB logs on the Linux command line
+tail -10 /var/log/mongodb/mongod.log
+grep error /var/log/mongodb/mongod.log
