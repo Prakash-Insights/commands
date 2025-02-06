@@ -1,0 +1,95 @@
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.*;
+
+public class ContentFilter implements Filter {
+    // ...
+
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+        HttpServletResponse httpResponse = (HttpServletResponse) response;
+
+        // Wrap the response to capture the output
+        CharResponseWrapper wrapper = new CharResponseWrapper(httpResponse);
+
+        // Continue the chain (let the request go to the servlet)
+        chain.doFilter(request, wrapper);
+
+        // Get the content from the wrapper
+        String content = wrapper.toString();
+
+        // Perform string replacements (like sub_filter)
+        content = content.replace("old-string", "new-string"); // Example
+
+        // Set the content length and write the modified content
+        httpResponse.setContentLength(content.length());
+        httpResponse.getWriter().write(content);
+    }
+
+    // ...
+}
+
+// CharResponseWrapper class (utility to capture response content)
+class CharResponseWrapper extends HttpServletResponseWrapper {
+    private CharArrayWriter output;
+
+    public CharResponseWrapper(HttpServletResponse response) {
+        super(response);
+        output = new CharArrayWriter();
+    }
+
+    @Override
+    public PrintWriter getWriter() throws IOException {
+        return new PrintWriter(output);
+    }
+
+    @Override
+    public String toString() {
+        return output.toString();
+    }
+}
+
+
+New
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.*;
+
+public class ContentFilter implements Filter {
+    // ...
+
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+        HttpServletRequest httpRequest = (HttpServletRequest) request;
+        HttpServletResponse httpResponse = (HttpServletResponse) response;
+
+        String requestURI = httpRequest.getRequestURI(); // Get the requested URI
+
+        // Check if the request is for index.html (or whatever your index file is named)
+        if (requestURI.endsWith("/index.html") || requestURI.endsWith("/")) { // Handle both /index.html and /
+            // Wrap the response to capture the output
+            CharResponseWrapper wrapper = new CharResponseWrapper(httpResponse);
+
+            // Continue the chain (let the request go to the servlet/resource)
+            chain.doFilter(request, wrapper);
+
+            // Get the content from the wrapper
+            String content = wrapper.toString();
+
+            // Perform string replacements (like sub_filter) ONLY for index.html
+            content = content.replace("old-string", "new-string"); // Example replacement
+
+            // Set the content length and write the modified content
+            httpResponse.setContentLength(content.length());
+            httpResponse.getWriter().write(content);
+        } else {
+            // For other requests (not index.html), just continue the chain without modification
+            chain.doFilter(request, response);
+        }
+    }
+
+    // ... (CharResponseWrapper class remains the same)
+}
+
+
+
