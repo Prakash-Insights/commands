@@ -49,7 +49,7 @@ class CharResponseWrapper extends HttpServletResponseWrapper {
     }
 }
 
-
+----------------------------
 New
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -89,6 +89,141 @@ public class ContentFilter implements Filter {
     }
 
     // ... (CharResponseWrapper class remains the same)
+}
+
+----------------------------
+New2
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.IOException;
+
+public class ResponseModificationFilter implements Filter {
+
+    private FilterConfig filterConfig;
+
+    public void init(FilterConfig filterConfig) throws ServletException {
+        this.filterConfig = filterConfig;
+    }
+
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+
+        HttpServletRequest httpRequest = (HttpServletRequest) request;
+        HttpServletResponse httpResponse = (HttpServletResponse) response;
+
+        // 1. Modify Headers (Example: Add a custom header)
+        httpResponse.addHeader("X-Custom-Header", "Value from Filter");
+        httpResponse.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // Example: Prevent caching
+
+        // 2. Modify Content (Body) -  Requires a Wrapper
+
+        // Create a custom response wrapper
+        ResponseWrapper wrappedResponse = new ResponseWrapper(httpResponse);
+
+
+        chain.doFilter(httpRequest, wrappedResponse); // Crucial: Pass the WRAPPED response
+
+        // Now you can access and modify the content AFTER the servlet has processed it.
+        String originalContent = wrappedResponse.getContent();
+
+        // Example: Append to the content
+        String modifiedContent = originalContent + "\n";
+        wrappedResponse.setContent(modifiedContent);
+
+
+        // Example: Replace content
+        //String modifiedContent = "Completely new content!";
+        //wrappedResponse.setContent(modifiedContent);
+
+
+        // Example:  Modify based on content analysis (be cautious of performance)
+        //if (originalContent.contains("some string")) {
+        //    modifiedContent = originalContent.replace("some string", "replacement");
+        //    wrappedResponse.setContent(modifiedContent);
+        //}
+
+        // Important: Set the Content-Length header after modifying the content
+        httpResponse.setContentLength(modifiedContent.length());
+
+        // Write the modified content to the response
+        httpResponse.getWriter().write(modifiedContent);
+
+
+    }
+
+
+    public void destroy() {
+        this.filterConfig = null;
+    }
+}
+
+// Wrapper class to capture the response content
+class ResponseWrapper extends HttpServletResponseWrapper {
+    private String content = "";
+    private ByteArrayOutputStream outputStream;
+    private PrintWriter writer;
+
+    public ResponseWrapper(HttpServletResponse response) {
+        super(response);
+        outputStream = new ByteArrayOutputStream();
+        writer = new PrintWriter(new OutputStreamWriter(outputStream, this.getCharacterEncoding())); // Maintain encoding
+    }
+
+    @Override
+    public PrintWriter getWriter() throws IOException {
+        return writer;
+    }
+
+    @Override
+    public ServletOutputStream getOutputStream() throws IOException {
+        return new ServletOutputStream() {
+            @Override
+            public void write(int b) throws IOException {
+                outputStream.write(b);
+            }
+
+            @Override
+            public void write(byte[] b, int off, int len) throws IOException {
+                outputStream.write(b, off, len);
+            }
+
+            @Override
+            public boolean isReady() {
+                return true; // Or track readiness if needed
+            }
+
+            @Override
+            public void setWriteListener(WriteListener listener) {
+                // Handle if asynchronous writes are required.  Often not needed.
+            }
+
+            @Override
+            public void flush() throws IOException {
+                outputStream.flush();
+            }
+
+            @Override
+            public void close() throws IOException {
+                outputStream.close();
+            }
+        };
+    }
+
+    public String getContent() {
+        writer.flush(); // Ensure all written data is in the stream
+        return outputStream.toString();
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+        try {
+            outputStream.reset(); // Clear the existing content
+            outputStream.write(content.getBytes(this.getCharacterEncoding())); // Use correct encoding
+        } catch (IOException e) {
+            // Handle appropriately (e.g., log or throw a ServletException)
+            e.printStackTrace(); // Example: Print the error
+        }
+    }
 }
 
 
